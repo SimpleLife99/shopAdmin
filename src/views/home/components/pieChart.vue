@@ -48,7 +48,7 @@
                         textStyle: {
                             fontSize: 14,
                             fontWeight: 'normal',
-                            color: '#333333'
+                            color: '#409eff'
                         }
                     },
                     tooltip: {
