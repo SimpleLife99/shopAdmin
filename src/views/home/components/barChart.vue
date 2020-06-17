@@ -1,17 +1,33 @@
 <template>
-    <div class="barChartitem" style="width: 100%;height: 300px"></div>
+    <div :class="className" :style="{width: width,height: height}"></div>
 </template>
 
 <script>
     import echarts from 'echarts'
+    import resize from "./mixins/resize";
 
     require('echarts/theme/macarons') // echarts theme
 
     export default {
         name: "barChart",
+        mixins: [resize],
+        props: {
+            className: {
+                type: String,
+                default: 'barChartitem'
+            },
+            width: {
+                type: String,
+                default: '100%'
+            },
+            height: {
+                type: String,
+                default: '300px'
+            }
+        },
         data() {
             return {
-                barChart: null,
+                chart: null,
                 commodityData: [
                     '杏花楼蛋黄莲蓉月饼',
                     '采石鸡蛋鸡丝茶干',
@@ -35,9 +51,9 @@
         },
         methods: {
             initChart() {
-                this.barChart = echarts.init(this.$el, 'macarons')
+                this.chart = echarts.init(this.$el, 'macarons')
 
-                this.barChart.setOption({
+                this.chart.setOption({
                     xAxis: {
                         type: 'category',
                         data: this.commodityData,
@@ -64,17 +80,17 @@
                         containLabel: true
                     },
                     // 数据过多的横向滚动条
-                    dataZoom:[{
+                    dataZoom: [{
                         // start: 0,
                         // end: 30,
-                        show:false,
+                        show: false,
                         type: 'slider',
                         xAxisIndex: [0],
                         filterMode: 'filter'
                     }],
                     series: [{
                         name: '销量',
-                        data: [270, 200, 150, 80, 70, 110, 130,110,80,10,26,89],
+                        data: [270, 200, 150, 80, 70, 110, 130, 110, 80, 10, 26, 89],
                         type: 'bar',
                         barWidth: '40%',
                         stack: 'vistors',
@@ -95,6 +111,9 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+    .barChartitem {
+        overflow-x: hidden !important;
+        overflow-y: hidden !important;
+    }
 </style>

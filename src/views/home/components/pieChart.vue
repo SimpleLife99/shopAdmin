@@ -1,16 +1,33 @@
 <template>
-    <div class="pieChartitem" style="width: 100%;height: 300px"></div>
+    <div :class="className" :style="{width: width,height: height}"></div>
 </template>
 
 <script>
     import echarts from 'echarts'
+    import resize from "./mixins/resize";
 
     require('echarts/theme/macarons') // echarts theme
+
     export default {
         name: "pieChart",
+        mixins: [resize],
+        props: {
+            className: {
+                type: String,
+                default: 'pieChartitem'
+            },
+            width: {
+                type: String,
+                default: '100%'
+            },
+            height: {
+                type: String,
+                default: '300px'
+            }
+        },
         data() {
             return {
-                pieChart: null
+                chart: null
             }
         },
         mounted() {
@@ -21,9 +38,9 @@
         },
         methods: {
             initChart() {
-                this.pieChart = echarts.init(this.$el, 'macarons')
+                this.chart = echarts.init(this.$el, 'macarons')
 
-                this.pieChart.setOption({
+                this.chart.setOption({
                     title: {
                         text: '订单数据',
                         top: 10,
