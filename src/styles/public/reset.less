@@ -1,0 +1,32 @@
+// html 样式初始化
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+// 阿里巴巴图标 默认样式
+.icon {
+  width: 1em;
+  height: 1em;
+  //vertical-align: -0.2em;
+  fill: currentColor;
+  overflow: hidden;
+}
+//隐藏侧边栏时 修改默认样式
+.hideSidebar {
+  .el-submenu__icon-arrow {
+    display: none !important;
+  }
+
+  .el-scrollbar .is-horizontal {
+    display: none;
+  }
+}

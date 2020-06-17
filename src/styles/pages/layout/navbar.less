@@ -1,0 +1,51 @@
+@import "./../../public/index";
+
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 24px 5px 0px;
+
+  .navbarLeft {
+    //color:red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .hamburgerMenu {
+      cursor: pointer;
+      padding: 10px;
+      font-size: 24px;
+      color: #666666;
+    }
+
+    .breadcrumbCenter {
+      margin-top:2px ;
+      margin-left: 10px;
+    }
+  }
+
+  .navbarRight {
+    display: flex;
+
+    .userMessage {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #FFFFFF;
+
+      .userLogo {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+
+      .userName {
+        margin-right: 10px;
+      }
+    }
+  }
+}

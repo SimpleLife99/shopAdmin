@@ -1,0 +1,112 @@
+@import "./../../public/index";
+
+@boxshadow: 8px 8px 15px rgba(0, 0, 0, 0.1),
+  -8px -8px 15px rgba(255, 255, 255, 1);
+@boxshadowHover: 0px 0px 0px rgba(0, 0, 0, 0.1),
+0px 0px 0px rgba(255, 255, 255, 1),
+inset 8px 8px 15px rgba(0, 0, 0, 0.1),
+  inset -8px -8px 15px rgba(255, 255, 255, 1);
+@areaMarginTop: 24px;
+.home {
+  padding: @app-main-padding;
+
+  .dataBoard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+    .boardItem {
+      width: 25%;
+      background-color: @app-main-background-color;
+      height: 100px;
+      padding: 8px;
+      margin: 0 20px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      transition: box-shadow .2s ease-in-out;
+      box-shadow: @boxshadow;
+
+      .boardIcon {
+        margin: 0 12px;
+        width: 50px;
+        height: 50px;
+        border-radius: 5px;
+        background: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+          font-size: 36px
+        }
+      }
+
+      .boardNum {
+        flex: 1;
+
+        p {
+          text-align: center;
+          margin-bottom: 10px;
+          font-size: 18px;
+          font-weight: bold;
+          color: #999999;
+          letter-spacing: 5px;
+        }
+
+        .countNum {
+          text-align: center;
+        }
+      }
+    }
+
+    .boardItem:hover {
+      box-shadow: @boxshadowHover;
+      transition: box-shadow .2s ease-in-out;
+    }
+
+    .boardItem:first-child {
+      margin-left: 0 !important;
+    }
+
+    .boardItem:last-child {
+      margin-right: 0px !important;
+    }
+  }
+
+  .chartArea {
+    margin-top: @areaMarginTop;
+    padding: 12px;
+    border-radius: 8px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: self-start;
+    background-color: @app-main-background-color;
+    box-shadow: @boxshadow;
+
+    .pie-chart {
+      width: 40%;
+      background-color: #FFFFFF;
+      border-radius: 8px;
+    }
+
+    .bar-chart {
+      flex: 1;
+      background-color: #FFFFFF;
+      border-radius: 8px;
+      margin-left: 15px;
+    }
+  }
+
+  .line-chart {
+    margin-top: @areaMarginTop;
+    padding: 12px;
+    border-radius: 8px;
+    min-height: 200px;
+    background-color: @app-main-background-color;
+    box-shadow: @boxshadow;
+  }
+}

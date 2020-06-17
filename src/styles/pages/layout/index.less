@@ -1,0 +1,92 @@
+@import "./../../public/index";
+
+.app-layout {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /*
+    sidebar-container 侧边栏的样式配置类名
+    @sider-width            侧边栏宽度
+    @sider-background-color 侧边栏背景颜色
+  */
+
+  .sidebar-container {
+    width: @sider-width;
+    transition: width 0.25s;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1001;
+    overflow: hidden;
+    background-color: @sider-background-color;
+
+    .sidebar-title {
+      font-size: 16px;
+    }
+
+    .horizontal-collapse-transition {
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+    }
+
+    .icon-content {
+      margin-right: 10px;
+
+      .iconfont {
+        font-size: 18px;
+      }
+    }
+  }
+
+  /*
+    main-container  主内容区的配置类名
+    @sider-width    侧边栏宽度
+    @app-main-background-color 主内容区背景颜色
+  */
+
+  .main-container {
+    min-height: 100vh;
+    transition: margin-left 0.25s;
+    margin-left: @sider-width;
+    position: relative;
+    background-color: @app-main-background-color;
+  }
+
+  /*
+    navbar-container  顶部导航内容区
+    @navbar-background-color 顶部导航背景颜色
+  */
+
+  .navbar-container {
+    height: 50px;
+    background-color: @navbar-background-color;
+  }
+}
+
+/*
+  侧边栏隐藏
+*/
+
+.hideSidebar {
+  .sidebar-container {
+    width: 54px !important;
+
+    .sidebar-title {
+      //height: 0;
+      //width: 0;
+      //overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      //display: inline-block;
+    }
+  }
+
+  .main-container {
+    margin-left: 54px;
+  }
+
+  .el-submenu {
+    overflow: hidden;
+  }
+}
