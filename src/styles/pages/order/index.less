@@ -1,0 +1,71 @@
+@import "./../../public/index";
+
+@basepadding: 12px;
+@boxshadow: 8px 8px 15px rgba(0, 0, 0, 0.1),
+  -8px -8px 15px rgba(255, 255, 255, 1);
+@boxshadowHover: 0px 0px 0px rgba(0, 0, 0, 0.1),
+0px 0px 0px rgba(255, 255, 255, 1),
+inset 8px 8px 15px rgba(0, 0, 0, 0.1),
+  inset -8px -8px 15px rgba(255, 255, 255, 1);
+.order {
+  padding: @basepadding;
+
+  .searchArea {
+    padding: @basepadding;
+    box-shadow: @boxshadow;
+    border-radius: @areaBorderRadius;
+
+    .inputArea {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      //justify-content: space-between;
+      flex-wrap: wrap;
+
+      .inputBox {
+        display: flex;
+        align-items: center;
+
+        p {
+          padding: 1em;
+          white-space: nowrap;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .operationArea {
+      background-color: #FFFFFF;
+      padding: @basepadding;
+      border-radius: @areaBorderRadius;
+      margin-top: 5px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      .orderNum {
+        display: flex;
+        align-items: center;
+
+        span {
+          font-size: 14px
+        }
+      }
+
+      .order-gmv {
+        font-size: 14px;
+        color: #627FFF;
+        margin-left: 12px;
+        background-color: #f5f5f5;
+        padding: 5px 14px;
+        border-radius: 20px;
+      }
+    }
+  }
+  .orderList{
+    margin-top: 20px;
+    border-radius: @areaBorderRadius;
+    overflow: hidden;
+  }
+}

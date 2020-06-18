@@ -21,7 +21,7 @@
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item icon="el-icon-s-shop">切换店铺</el-dropdown-item>
                     <el-dropdown-item icon="el-icon-s-tools">修改密码</el-dropdown-item>
-                    <el-dropdown-item @click="logout()" icon="el-icon-s-promotion">安全退出</el-dropdown-item>
+                    <el-dropdown-item @click.native="logout" icon="el-icon-s-promotion">安全退出</el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
         </div>

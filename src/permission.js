@@ -3,7 +3,6 @@ import store from './store'
 import {getToken} from './utils/auth'
 
 const whiteList = ['/login']        // 不许要登录权限的路由白名单
-
 router.beforeEach(async (to, from, next) => {
     //vue 路由页设置页面title
     if (to.meta.title) {
@@ -27,8 +26,8 @@ router.beforeEach(async (to, from, next) => {
                     const accessRoutes = await store.dispatch('generateRoutes', roles)
                     // 动态添加可访问路由
                     router.addRoutes(accessRoutes)
-                    next({replace: true})
-                    // next({ ...to,replace: true })
+                    // next({replace: true})
+                    next({ ...to,replace: true })
                 } catch (e) {
                     next({path: '/login', replace: true})
                 }

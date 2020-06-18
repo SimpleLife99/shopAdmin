@@ -63,7 +63,7 @@
                         duration: 2000
                     });
                     this.$store.dispatch('login',{userName:this.userName,password:this.password})
-                    this.$router.push({name: 'Home'})
+                    this.$router.push({name: 'Home',replace: true})
                 }
             },
             verification(string) {

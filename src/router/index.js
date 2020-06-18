@@ -12,6 +12,8 @@ Vue.use(VueRouter)
 * 引入需要的网页布局
 * */
 import Layout from '@/layout'
+/* 导入模块路由 */
+import orderRouter from "./modules/order";
 /*
 * constantRoutes
 *   代表那些不需要动态判断权限的路由，如登录页、404、等通用页面。
@@ -28,7 +30,7 @@ export const constantRoutes = [
                 path: 'home',
                 component: () => import('@/views/home/index'),
                 name: 'Home',
-                meta: {title: '首页',icon:'shouye'}
+                meta: {title: '首页', icon: 'shouye'}
             }
         ]
     },
@@ -44,9 +46,9 @@ export const asyncRoutes = [
     {
         path: '/about',
         component: Layout,
-        redirect:'/about/index',
+        redirect: '/about/index',
         name: 'About',
-        meta: {title: '关于我们', roles: ['admin'],icon:'paihangbang'},
+        meta: {title: '关于我们', roles: ['admin'], icon: 'paihangbang'},
         children: [
             {
                 path: 'index',
@@ -66,20 +68,37 @@ export const asyncRoutes = [
             }
         ]
     },
+    orderRouter,
     {
         path: '/activity',
-        redirect: '/activity/assemble',
+        redirect: '/activity/assemble/activityList',
         name: 'Activety',
         component: Layout,
-        meta: {roles: ['admin'],title: '营销',icon:'dianyingpiao'},
+        meta: {roles: ['admin'], title: '营销', icon: 'dianyingpiao'},
         children: [
             {
                 path: 'assemble',
                 name: 'actAssemble',
                 component: () => import('@/views/activity/assemble/index'),
-                meta: {
-                    title: '拼团活动',
-                }
+                children: [
+                    {
+                        path: 'activityList',
+                        name: 'activityList',
+                        component: () => import('@/views/activity/assemble/index'),
+                        meta: {
+                            title: '拼团活动',
+                        }
+                    },
+                    {
+                        path: 'operation',
+                        name: 'assOperation',
+                        hidden: true,
+                        component: () => import('@/views/activity/assemble/activityOperation'),
+                        meta: {
+                            title: '创建活动'
+                        }
+                    }
+                ]
             },
             {
                 path: "seckill",
@@ -100,6 +119,7 @@ const createRoute = () => new VueRouter({
     routes: constantRoutes,
 })
 const router = createRoute()
+
 /*
 * 当用户退出登录时，清除当前路由。
 * */

@@ -7,6 +7,7 @@
 inset 8px 8px 15px rgba(0, 0, 0, 0.1),
   inset -8px -8px 15px rgba(255, 255, 255, 1);
 @areaMarginTop: 24px;
+
 .home {
   padding: @app-main-padding;
 
@@ -22,7 +23,7 @@ inset 8px 8px 15px rgba(0, 0, 0, 0.1),
       height: 100px;
       padding: 8px;
       margin: 0 20px;
-      border-radius: 8px;
+      border-radius: @areaBorderRadius;
       display: flex;
       flex-direction: row;
       align-items: center;
@@ -79,7 +80,7 @@ inset 8px 8px 15px rgba(0, 0, 0, 0.1),
   .chartArea {
     margin-top: @areaMarginTop;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: @areaBorderRadius;
     min-height: 200px;
     display: flex;
     flex-direction: row;
@@ -90,13 +91,13 @@ inset 8px 8px 15px rgba(0, 0, 0, 0.1),
     .pie-chart {
       width: 40%;
       background-color: #FFFFFF;
-      border-radius: 8px;
+      border-radius: @areaBorderRadius;
     }
 
     .bar-chart {
       flex: 1;
       background-color: #FFFFFF;
-      border-radius: 8px;
+      border-radius: @areaBorderRadius;
       margin-left: 15px;
     }
   }
@@ -104,7 +105,7 @@ inset 8px 8px 15px rgba(0, 0, 0, 0.1),
   .line-chart {
     margin-top: @areaMarginTop;
     padding: 12px;
-    border-radius: 8px;
+    border-radius: @areaBorderRadius;
     min-height: 200px;
     background-color: @app-main-background-color;
     box-shadow: @boxshadow;
