@@ -15,8 +15,8 @@ export class Request {
 
     async post(params) {
         try {
-            return await axios.post(params.url, params.data, {
-                headers: params.header
+            return await axios.post(params.url || {}, params.data || {}, {
+                headers: params.headers
             })
         } catch (error) {
             Message({
@@ -30,8 +30,8 @@ export class Request {
     async get(params) {
         try {
             return await axios.get(params.url, {
-                data: params.data,
-                headers: params.header
+                data: params.data || {},
+                headers: params.headers || {}
             })
         } catch (error) {
             Message({
@@ -61,7 +61,7 @@ export class Request {
     async ResponseInterceptor() {
         axios.interceptors.response.use(response => {
             // 对响应数据做点什么
-            return response;
+            return response.data
         }, function (error) {
             // 对响应错误做点什么
             return Promise.reject(error);

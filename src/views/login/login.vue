@@ -15,12 +15,13 @@
                 <el-input class="loginInput" size="large" placeholder="请输入密码" show-password
                           v-model="password"></el-input>
             </div>
-            <el-button class="loginBtn" @click="login" type="primary">登录</el-button>
+            <el-button class="loginBtn" @click="userLogin" type="primary">登录</el-button>
         </div>
     </div>
 </template>
 
 <script>
+    import http from '@/http/api/login'
     export default {
         name: "login",
         data() {
@@ -67,9 +68,13 @@
                 }
             },
             verification(string) {
-                //输入内容中是否含有字符串检查
+                // 输入内容中是否含有字符串检查
                 const reg = /\s/;
                 return reg.test(string)
+            },
+            async userLogin(){
+                let Data = await http.login({})
+                console.log(Data)
             }
         }
     }

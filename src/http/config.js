@@ -1,7 +1,7 @@
 export default {
-    developUrl:'',
+    developUrl:'http://localhost:3000',
     productUrl:'',
     api:{
-        login:'/login'
+        login:'/'
     }
 }
