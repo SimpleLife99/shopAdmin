@@ -48,8 +48,9 @@ export class Request {
             /*
             * 在发送请求之前做些什么
             * 统一设置请求头
+            * application/x-www-form-urlencoded
             */
-            config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            config.headers['Content-Type'] = 'application/json';
             return config;
         }, function (error) {
             // 对请求错误做些什么

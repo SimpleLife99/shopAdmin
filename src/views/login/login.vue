@@ -73,7 +73,12 @@
                 return reg.test(string)
             },
             async userLogin(){
-                let Data = await http.login({})
+                let Data = await http.login({
+                    data:{
+                        userName:'suqi',
+                        password:'123'
+                    }
+                })
                 console.log(Data)
             }
         }
