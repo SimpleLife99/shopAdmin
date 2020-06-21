@@ -1,37 +1,4 @@
 # shopadmin
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### 功能项
-
-```
---- 已完成
-    - vuex 封装
-    - 网络请求 ajax 封装
-    - 路由封装
-    - 未登录下路由重定向
-    - 以登录下路由重定向
-    - less 文件重构
-    - 封装动态路由组件，并通过路由生成侧边栏
-    - 路由权限判定
-    - 跟据路由动态渲染菜单栏
-    - 包含子路由渲染的菜单栏的子项菜单
-```
+> shopadmin 是一个以VUE为前端框架Element-ui为UI框架的后台管理项目，
+> 项目目前处于开发阶段。
+>
