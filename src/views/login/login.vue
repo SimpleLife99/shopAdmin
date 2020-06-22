@@ -15,7 +15,7 @@
                 <el-input class="loginInput" size="large" placeholder="请输入密码" show-password
                           v-model="password"></el-input>
             </div>
-            <el-button class="loginBtn" @click="userLogin" type="primary">登录</el-button>
+            <el-button class="loginBtn" @click="login" type="primary">登录</el-button>
         </div>
     </div>
 </template>

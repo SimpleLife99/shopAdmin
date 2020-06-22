@@ -2,6 +2,13 @@ import config from "./config";
 import axios from "axios";
 import {Message} from 'element-ui'
 
+/*
+* 当请求头为 “ application/x-www-form-urlencoded ” 时
+* 修改 data 传值类型
+* import Qs from "qs";
+* data = qs.stringify(params.data)
+* */
+
 export class Request {
     constructor() {
         /**
@@ -16,6 +23,7 @@ export class Request {
     async post(params) {
         try {
             return await axios.post(params.url || {}, params.data || {}, {
+                emulateJSON: true,
                 headers: params.headers
             })
         } catch (error) {
@@ -48,9 +56,10 @@ export class Request {
             /*
             * 在发送请求之前做些什么
             * 统一设置请求头
+            * application/json
             * application/x-www-form-urlencoded
             */
-            config.headers['Content-Type'] = 'application/json';
+            config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
             return config;
         }, function (error) {
             // 对请求错误做些什么
@@ -69,4 +78,5 @@ export class Request {
         });
     }
 }
+
 export default new Request()
