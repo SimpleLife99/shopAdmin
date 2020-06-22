@@ -2,9 +2,9 @@
 > &nbsp; shopadmin 是一个以VUE为前端框架Element-ui为UI框架的后台管理项目，
 > 项目目前处于开发阶段。
 
-###项目集成：
+### 项目集成：
 
-![123.png](https://i.postimg.cc/prCddy9P/123.png)
+![123.png](https://i.postimg.cc/prCddy9P/123.png?raw=true)
 
 > 网站依赖Element-ui封装layout布局：
 > - 侧边栏
