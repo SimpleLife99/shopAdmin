@@ -3,17 +3,21 @@
         <h2>This is an About page</h2>
         <el-button type="primary" @click="logout()">退出登录</el-button>
         <el-button type="primary" @click="pageJump()">首页</el-button>
+        <hello ref="data" :msg="message" @setNum="getNum"></hello>
     </div>
 </template>
 
 <script>
     import {mapState, mapMutations} from 'vuex'
     import { removeToken } from "@/utils/auth"
+    import hello from '@/components/HelloWorld'
 
     export default {
         name: 'Home',
         data() {
-            return {}
+            return {
+                message:'hello'
+            }
         },
         computed: {
             ...mapState({
@@ -21,10 +25,12 @@
             }),
         },
         created() {
+
         },
         mounted() {
+
         },
-        components: {},
+        components: { hello },
         methods: {
             ...mapMutations(['SET_USER']),
             logout() {
@@ -34,6 +40,9 @@
             },
             pageJump(){
                 this.$router.push({path:'/'})
+            },
+            getNum(){
+                console.log(this.$refs["data"])
             }
         }
     }

@@ -23,7 +23,6 @@ export class Request {
     async post(params) {
         try {
             return await axios.post(params.url || {}, params.data || {}, {
-                emulateJSON: true,
                 headers: params.headers
             })
         } catch (error) {
@@ -59,7 +58,7 @@ export class Request {
             * application/json
             * application/x-www-form-urlencoded
             */
-            config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+            config.headers['Content-Type'] = 'application/json';
             return config;
         }, function (error) {
             // 对请求错误做些什么

@@ -15,13 +15,14 @@
                 <el-input class="loginInput" size="large" placeholder="请输入密码" show-password
                           v-model="password"></el-input>
             </div>
-            <el-button class="loginBtn" @click="login" type="primary">登录</el-button>
+            <el-button class="loginBtn" @click="getAuthCode" type="primary">登录</el-button>
         </div>
     </div>
 </template>
 
 <script>
     import http from '@/http/api/login'
+
     export default {
         name: "login",
         data() {
@@ -63,8 +64,8 @@
                         type: 'success',
                         duration: 2000
                     });
-                    this.$store.dispatch('login',{userName:this.userName,password:this.password})
-                    this.$router.push({name: 'Home',replace: true})
+                    this.$store.dispatch('login', {userName: this.userName, password: this.password})
+                    this.$router.push({name: 'Home', replace: true})
                 }
             },
             verification(string) {
@@ -72,14 +73,19 @@
                 const reg = /\s/;
                 return reg.test(string)
             },
-            async userLogin(){
+            async userLogin() {
                 let Data = await http.login({
-                    data:{
-                        userName:'suqi',
-                        password:'123'
+                    data: {
+                        userName: this.userName,
+                        password: this.password
                     }
                 })
                 console.log(Data)
+            },
+            async getAuthCode(){
+                // 获取验证码
+                let Data = await http.getAuthCode({})
+                console.log('获取验证',Data.data)
             }
         }
     }
