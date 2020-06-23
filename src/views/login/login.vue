@@ -15,20 +15,20 @@
                 <el-input class="loginInput" size="large" placeholder="请输入密码" show-password
                           v-model="password"></el-input>
             </div>
-            <el-button class="loginBtn" @click="getAuthCode" type="primary">登录</el-button>
+            <el-button class="loginBtn" @click="login()" type="primary">登录</el-button>
         </div>
     </div>
 </template>
 
 <script>
-    import http from '@/http/api/login'
+    // import http from '@/http/api/login'
 
     export default {
         name: "login",
         data() {
             return {
-                userName: 'admin',
-                password: '111',
+                userName: 'suqi',
+                password: '123',
             }
         },
         components: {},
@@ -42,7 +42,7 @@
             //    组件挂载之前
         },
         mounted() {
-            //    组件挂载完成
+            //    组件挂载完成 获取auth验证
         },
         beforeDestroy() {
             //    解除绑定，销毁组件前
@@ -64,8 +64,10 @@
                         type: 'success',
                         duration: 2000
                     });
-                    this.$store.dispatch('login', {userName: this.userName, password: this.password})
-                    this.$router.push({name: 'Home', replace: true})
+                    this.$store.dispatch('getAuthCode')
+                    this.$store.dispatch('login', {userName: this.userName, password: this.password}).then(()=>{
+                        this.$router.push({name: 'Home', replace: true})
+                    })
                 }
             },
             verification(string) {
@@ -73,19 +75,9 @@
                 const reg = /\s/;
                 return reg.test(string)
             },
-            async userLogin() {
-                let Data = await http.login({
-                    data: {
-                        userName: this.userName,
-                        password: this.password
-                    }
-                })
-                console.log(Data)
-            },
-            async getAuthCode(){
+            getAuthCode(){
                 // 获取验证码
-                let Data = await http.getAuthCode({})
-                console.log('获取验证',Data.data)
+                this.$store.dispatch('getAuthCode')
             }
         }
     }

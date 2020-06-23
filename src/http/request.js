@@ -70,7 +70,15 @@ export class Request {
     async ResponseInterceptor() {
         axios.interceptors.response.use(response => {
             // 对响应数据做点什么
-            return response.data
+            if (response.data.errorCode == 200){
+                return response.data
+            }else{
+                Message({
+                    message: response.data.message,
+                    type: 'error',
+                    duration: 2000
+                })
+            }
         }, function (error) {
             // 对响应错误做点什么
             return Promise.reject(error);

@@ -1,5 +1,6 @@
-import {setToken, removeToken} from '@/utils/auth'
+import {removeToken, setToken} from '@/utils/auth'
 import {resetRouter} from "@/router";
+import http from '@/http/api/login'
 
 const user = {
     //存放数据
@@ -22,18 +23,33 @@ const user = {
     },
     //异步提交 mutations
     actions: {
-        // eslint-disable-next-line no-unused-vars
-        login: function ({commit}, userInfo) {
-            console.log('用户信息', userInfo)
-            let token = 'abcdefg'
-            commit('SET_TOKEN', token)
-            commit('SET_USER', userInfo)
-            setToken(token)
+        login: async function ({commit}, userInfo) {
+            return new Promise((resolve, reject) => {
+                http.login({
+                    data:userInfo
+                }).then((response)=>{
+                    commit('SET_USER', response.data)
+                    resolve()
+                }).catch(error =>{
+                    reject(error)
+                })
+            })
         },
         getUserinfo: function ({commit}) {
             let roles = ['admin']
             commit('SET_ROLES', roles)
             return roles
+        },
+        getAuthCode: async function ({commit}) {
+            return new Promise((resolve, reject) => {
+                http.getAuthCode({}).then((response) => {
+                    commit('SET_TOKEN', response.data)
+                    setToken(response.data)
+                    resolve()
+                }).catch(error=>{
+                    reject(error)
+                })
+            })
         },
         logOut: function ({commit}) {
             commit('SET_TOKEN', '')
