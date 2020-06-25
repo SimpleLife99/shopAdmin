@@ -77,7 +77,6 @@
 </template>
 
 <script>
-    import {mapState, mapMutations, mapGetters} from 'vuex'
     import countTo from 'vue-count-to'
     import pieChart from "./components/pieChart";
     import barChart from "./components/barChart";
@@ -111,17 +110,12 @@
         },
         components: {countTo,pieChart,barChart,lineChart},
         computed: {
-            ...mapState({
-                userMessage: state => state.user.userMessage
-            }),
-            ...mapGetters(['userMessage'])
         },
         created() {
         },
         mounted() {
         },
         methods: {
-            ...mapMutations(['SET_USER']),
         }
     }
 </script>

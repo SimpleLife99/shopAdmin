@@ -38,12 +38,14 @@
         },
         computed: {
             ...mapState({
-                isCollapse: state => state.application.isCollapse
+                isCollapse: state => state.application.isCollapse,
+                userMessage: state => state.user.userMessage
             }),
-            ...mapGetters(['isCollapse']),
+            ...mapGetters(['isCollapse','userMessage']),
         },
         components:{breadcrumb},
         created() {
+            console.log(this.userMessage)
         },
         methods: {
             logout() {

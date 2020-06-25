@@ -16,6 +16,7 @@ export class Request {
          * baseURL将自动加在url前面
          * */
         axios.defaults.baseURL = process.env.NODE_ENV === 'production' ? config.productUrl : config.developUrl
+        axios.defaults.timeout = 10000
         this.RequestInterceptors()  // 添加请求拦截器 请求或响应被 then 或 catch 处理前拦截它们
         this.ResponseInterceptor()  // 添加响应拦截器
     }
