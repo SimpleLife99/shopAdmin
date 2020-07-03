@@ -1,22 +1,31 @@
 <template>
     <div class="home">
-        <h2>This is an About page</h2>
-        <el-button type="primary" @click="logout()">退出登录</el-button>
-        <el-button type="primary" @click="pageJump()">首页</el-button>
-        <hello ref="data" :msg="message" @setNum="getNum"></hello>
+        <h2>拖动组件</h2>
+        <div class="sortable">
+            <div class="newArr" id="sorNew">
+                <p>单列表拖动：</p>
+                <div class="newitem" v-for="(item,index) in newArr" :key="index" :drag-id="index">
+                    {{ item.content }}
+                </div>
+            </div>
+            <div class="oldArr"></div>
+        </div>
     </div>
 </template>
 
 <script>
-    import {mapState, mapMutations} from 'vuex'
-    import { removeToken } from "@/utils/auth"
-    import hello from '@/components/HelloWorld'
+    import {mapMutations, mapState} from 'vuex'
+    import Sortable from 'sortablejs';
 
     export default {
         name: 'Home',
         data() {
             return {
-                message:'hello'
+                message: 'hello',
+                newArr: [{id: 1, content: 'item1'}, {id: 2, content: 'item2'}, {id: 3, content: 'item3'}, {
+                    id: 4,
+                    content: 'item4'
+                }, {id: 5, content: 'item5'}]
             }
         },
         computed: {
@@ -28,25 +37,29 @@
 
         },
         mounted() {
-
+            this.createSortable()
         },
-        components: { hello },
         methods: {
             ...mapMutations(['SET_USER']),
-            logout() {
-                this.SET_USER({})
-                removeToken()
-                this.$router.replace({path: '/login'})
-            },
-            pageJump(){
-                this.$router.push({path:'/'})
-            },
-            getNum(){
-                console.log(this.$refs["data"])
+            createSortable() {
+                Sortable.create(document.getElementById('sorNew'), {
+                    animation: 150,
+                    onEnd: function (evt) {
+                        let id_arr = []
+                        for (let i = 0, len = evt.from.children.length; i < len; i++) {
+                            let temp = {
+                                id:evt.from.children[i].getAttribute('drag-id'),
+                                content:evt.from.children[i].innerHTML
+                            }
+                            id_arr.push(temp)
+                        }
+                        console.log('拖拽后的排序数组',id_arr);
+                    }
+                });
             }
         }
     }
 </script>
 <style lang="less" scoped>
-
+    @import "./../../styles/pages/about/index";
 </style>

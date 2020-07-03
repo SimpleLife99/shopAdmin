@@ -4,10 +4,11 @@
 export function isCanUse() {
     return false
 }
+
 export function debounce(func, wait, immediate) {
     let timeout, args, context, timestamp, result
 
-    const later = function() {
+    const later = function () {
         // 据上一次触发时间间隔
         const last = +new Date() - timestamp
 
@@ -24,7 +25,7 @@ export function debounce(func, wait, immediate) {
         }
     }
 
-    return function(...args) {
+    return function (...args) {
         context = this
         timestamp = +new Date()
         const callNow = immediate && !timeout
@@ -37,4 +38,54 @@ export function debounce(func, wait, immediate) {
 
         return result
     }
+}
+/*
+* @timestamp 时间戳 ；@formats 时间格式
+* 其中formats格式包括
+* 1. Y-m-d
+* 2. Y-m-d H:i:s
+* 3. Y年m月d日
+* 4. Y年m月d日 H时i分
+* */
+export function dateFormat(timestamp, formats) {
+    formats = formats || 'Y-m-d';
+    var zero = function (value) {
+        if (value < 10) {
+            return '0' + value;
+        }
+        return value;
+    };
+    if (typeof (timestamp) === 'string') {
+        if (timestamp.length === 10) {
+            // 秒字符时间戳 转 毫秒 转 数字
+            timestamp = (timestamp.toFixed()) * 1000
+        } else if (timestamp.length === 13) {
+            // 毫秒字符时间戳 转数字
+            timestamp = timestamp.toFixed()
+        }
+    } else if (typeof (timestamp) === 'number') {
+        if (timestamp.toString().length === 10) {
+            timestamp = timestamp * 1000
+        }
+    }
+    var myDate = timestamp ? new Date(timestamp) : new Date();
+
+    var year = myDate.getFullYear();
+    var month = zero(myDate.getMonth() + 1);
+    var day = zero(myDate.getDate());
+
+    var hour = zero(myDate.getHours());
+    var minite = zero(myDate.getMinutes());
+    var second = zero(myDate.getSeconds());
+
+    return formats.replace(/Y|m|d|H|i|s/ig, function (matches) {
+        return ({
+            Y: year,
+            m: month,
+            d: day,
+            H: hour,
+            i: minite,
+            s: second
+        })[matches];
+    });
 }

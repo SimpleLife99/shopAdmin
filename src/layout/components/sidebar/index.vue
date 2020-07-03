@@ -4,9 +4,9 @@
         <el-scrollbar>
             <el-menu
                     :default-active="activeMenu"
-                    background-color="#333951"
-                    text-color="#bfcbd9"
-                    active-text-color="#409EFF"
+                    background-color="#32394c"
+                    text-color="#e6e7e9"
+                    active-text-color="#627fff"
                     :collapse-transition="true"
                     :unique-opened="false"
                     :collapse="isCollapse"

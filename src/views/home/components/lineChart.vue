@@ -5,6 +5,7 @@
 <script>
     import echarts from 'echarts'
     import resize from "./mixins/resize";
+
     require('echarts/theme/macarons') // echarts theme
 
     export default {
@@ -26,31 +27,31 @@
         },
         data() {
             return {
-                chart:null
+                chart: null
             }
         },
         mounted() {
             this.initChart()
         },
         methods: {
-            initChart(){
+            initChart() {
                 this.chart = echarts.init(this.$el, 'macarons')
                 this.chart.setOption({
-                    title:{
-                        text:'订单金额-订单量曲线',
-                        top: 10,
-                        left: 10,
-                        textStyle: {
-                            fontSize: 14,
-                            fontWeight: 'normal',
-                            color: '#409eff'
-                        }
-                    },
+                    // title: {
+                    //     text: '订单明细',
+                    //     top: 10,
+                    //     left: 10,
+                    //     textStyle: {
+                    //         fontSize: 14,
+                    //         fontWeight: 'normal',
+                    //         color: '#333'
+                    //     }
+                    // },
                     tooltip: {
                         trigger: 'axis'
                     },
-                    legend:{
-                        data:['金额','订单量']
+                    legend: {
+                        data: ['金额', '订单量']
                     },
                     grid: {
                         top: 50,
@@ -68,23 +69,43 @@
                     xAxis: {
                         type: 'category',
                         boundaryGap: false,
-                        data: ['06-11','06-12','06-13','06-14','06-15','06-16','06-17','06-18']
+                        data: ['06-11', '06-12', '06-13', '06-14', '06-15', '06-16', '06-17', '06-18']
                     },
                     yAxis: {
                         type: 'value'
                     },
-                    series:[
+                    series: [
                         {
-                            name:'金额',
-                            type:'line',
+                            name: '金额',
+                            type: 'line',
                             smooth: true,
-                            data:[150,123,1546,464,489,158,125,835]
+                            data: [150, 123, 304, 464, 489, 158, 125, 230],
+                            itemStyle: {color: '#6b86ff'},
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgba(98,127,255,0.5)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(164,181,255,0.22)'
+                                }])
+                            }
                         },
                         {
-                            name:'订单量',
-                            type:'line',
+                            name: '订单量',
+                            type: 'line',
                             smooth: true,
-                            data:[15,25,35,50,61,23,54,84]
+                            data: [20, 100, 120, 80, 230, 110, 350, 280],
+                            itemStyle: {color: '#c96bff'},
+                            areaStyle: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                    offset: 0,
+                                    color: 'rgba(201,107,255,0.5)'
+                                }, {
+                                    offset: 1,
+                                    color: 'rgba(255,255,255,0.2)'
+                                }])
+                            },
                         }
                     ]
                 })
@@ -94,9 +115,8 @@
 </script>
 
 <style scoped lang="less">
-.lineChartitem{
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    padding: 5px 0;
-}
+    .lineChartitem {
+        background-color: #FFFFFF;
+        border-radius: 8px;
+    }
 </style>

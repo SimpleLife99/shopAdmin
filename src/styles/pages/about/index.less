@@ -1,0 +1,38 @@
+@import "./../../public/index";
+
+@boxshadow: 8px 8px 15px rgba(0, 0, 0, 0.1),
+  -8px -8px 15px rgba(255, 255, 255, 1);
+
+.home {
+  padding: @app-main-basepadding;
+
+  .sortable {
+    margin-top: 10px;
+    min-height: 300px;
+    border-radius: @areaBorderRadius;
+    box-shadow: @boxshadow;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .newArr {
+      width: 300px;
+      padding: 5px;
+      border: 1px solid red;
+
+      .newitem {
+        padding-left: 10px;
+        border: #fdc7a1 1px solid;
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+
+    .oldArr {
+      flex: 1;
+      min-height: 200px;
+      margin-left: 10px;
+      border: 1px solid black;
+    }
+  }
+}

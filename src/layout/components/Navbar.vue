@@ -44,9 +44,7 @@
             ...mapGetters(['isCollapse','userMessage']),
         },
         components:{breadcrumb},
-        created() {
-            console.log(this.userMessage)
-        },
+        created() {  },
         methods: {
             logout() {
                 this.$store.dispatch('logOut')

@@ -1,61 +1,58 @@
 <template>
     <div class="home">
         <div class="dataBoard">
-            <div class="boardItem">
-                <div class="boardIcon"><i class="el-icon-s-goods" style="color: #fdc7a1"></i></div>
-                <div class="boardNum">
-                    <p>金额</p>
-                    <div class="countNum">
-                        <span>￥</span>
-                        <countTo
-                                :startVal=countNum.money.start
-                                :endVal=countNum.money.end
-                                :duration=countNum.duration
-                                :autoplay=countNum.autoplay
-                        />
+            <div class="line-chart">
+                <!-- 折线图 -->
+                <p class="chartTitle">
+                    <span>订单明细</span>
+                </p>
+                <lineChart/>
+            </div>
+            <div class="orderData">
+                <div class="orderTitle">
+                    <div class="navItem" v-for="(item,index) in orderTabTitle" :key="index" @click="changeOrderTab(index)">
+                        <div class="navLine">{{ item }}</div>
                     </div>
                 </div>
-            </div>
-            <div class="boardItem">
-                <div class="boardIcon"><i class="el-icon-s-marketing" style="color: #89c6f8"></i></div>
-                <div class="boardNum">
-                    <p>订单量</p>
-                    <div class="countNum">
-                        <countTo
-                                :startVal=countNum.order.start
-                                :endVal=countNum.order.end
-                                :duration=countNum.duration
-                                :autoplay=countNum.autoplay
-                        />
-                    </div>
+                <div class="orderContent" v-if="orderTabIndex === 0">
+                    <countTo :startVal="countNum.startVal" :endVal="100" :duration="countNum.duration" :autoplay="countNum.autoplay"></countTo>
                 </div>
-            </div>
-            <div class="boardItem">
-                <div class="boardIcon"><i class="el-icon-s-finance" style="color: #fdd037"></i></div>
-                <div class="boardNum">
-                    <p>优惠券</p>
-                    <div class="countNum">
-                        <countTo
-                                :startVal=countNum.discount.start
-                                :endVal=countNum.discount.end
-                                :duration=countNum.duration
-                                :autoplay=countNum.autoplay
-                        />
-                    </div>
-                </div>
-            </div>
-            <div class="boardItem">
-                <div class="boardIcon"><i class="el-icon-s-data" style="color: #79e2d6"></i></div>
-                <div class="boardNum">
-                    <p>店铺</p>
-                    <div class="countNum">
-                        <countTo
-                                :startVal=countNum.shop.start
-                                :endVal=countNum.shop.end
-                                :duration=countNum.duration
-                                :autoplay=countNum.autoplay
-                        />
-                    </div>
+                <div class="orderContent" v-if="orderTabIndex === 1">
+                    <table border="0">
+                        <tr style="height: 60px;background-color: #f4f6ff">
+                            <th width="40%">类别</th>
+                            <th width="20%">支付宝</th>
+                            <th width="20%">微信</th>
+                            <th width="20%">总计</th>
+                        </tr>
+                        <tr>
+                            <td>昨日订单总量(笔）</td>
+                            <td>
+                                <countTo
+                                        :startVal="countNum.startVal"
+                                        :endVal="128"
+                                        :duration="countNum.duration"
+                                        :autoplay="countNum.autoplay"
+                                ></countTo>
+                            </td>
+                            <td>
+                                <countTo
+                                        :startVal="countNum.startVal"
+                                        :endVal="128"
+                                        :duration="countNum.duration"
+                                        :autoplay="countNum.autoplay"
+                                ></countTo>
+                            </td>
+                            <td>
+                                <countTo
+                                        :startVal="countNum.startVal"
+                                        :endVal="128"
+                                        :duration="countNum.duration"
+                                        :autoplay="countNum.autoplay"
+                                ></countTo>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
@@ -68,10 +65,6 @@
                 <!--柱状图-->
                 <barChart/>
             </div>
-        </div>
-        <div class="line-chart">
-            <!-- 折线图 -->
-            <lineChart/>
         </div>
     </div>
 </template>
@@ -86,36 +79,26 @@
         name: 'Home',
         data() {
             return {
-                countNum: {
-                    duration: 3000,
-                    autoplay: true,
-                    money: {
-                        start: 0,
-                        end: 1000
-                    },
-                    order: {
-                        start: 0,
-                        end: 100
-                    },
-                    shop: {
-                        start: 0,
-                        end: 5
-                    },
-                    discount: {
-                        start: 0,
-                        end: 40
-                    }
+                orderTabIndex: 0,
+                orderTabTitle: ['订单明细', '金额明细'],    //  订单明细的tab切换
+                countNum:{                                //    滚动数字通用配置项
+                    startVal:0,
+                    duration:3000,
+                    autoplay:true
                 }
             }
         },
-        components: {countTo,pieChart,barChart,lineChart},
-        computed: {
-        },
+        // eslint-disable-next-line vue/no-unused-components
+        components: {countTo, pieChart, barChart, lineChart},
+        computed: {},
         created() {
         },
         mounted() {
         },
         methods: {
+            changeOrderTab(index){
+                this.orderTabIndex = index
+            }
         }
     }
 </script>

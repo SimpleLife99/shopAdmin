@@ -98,4 +98,8 @@
 
 <style scoped lang="less">
     @import "./../../../styles/pages/layout/index.less";
+    .is-active{
+        /*  菜单激活时的背景颜色  */
+        background-color: #2c405a !important;
+    }
 </style>

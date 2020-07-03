@@ -6,10 +6,17 @@
 
 <script>
     export default {
-        name: "introduction"
+        name: "introduction",
+        data(){
+            return{
+
+            }
+        },
+        created(){},
+        methods:{  }
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
 </style>
