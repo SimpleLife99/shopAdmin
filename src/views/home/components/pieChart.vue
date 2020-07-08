@@ -65,7 +65,7 @@
                             name: '订单状态信息',
                             type: 'pie',
                             roseType: 'radius',
-                            radius: [15, 95],
+                            radius: [20, 95],
                             data: [
                                 {value: 235, name: '未支付'},
                                 {value: 274, name: '已支付'},
