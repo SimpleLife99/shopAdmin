@@ -8,6 +8,10 @@ ul, ol {
   list-style: none;
 }
 
+input {
+  outline: 0;
+}
+
 a {
   text-decoration: none;
 }
@@ -20,6 +24,7 @@ a {
   fill: currentColor;
   overflow: hidden;
 }
+
 //隐藏侧边栏时 修改默认样式
 .hideSidebar {
   .el-submenu__icon-arrow {
@@ -29,33 +34,39 @@ a {
   .el-scrollbar .is-horizontal {
     display: none;
   }
-  .el-scrollbar__wrap{
+
+  .el-scrollbar__wrap {
     overflow-x: hidden;
   }
 }
+
 // 滚动条样式
 ::-webkit-scrollbar {
   /*滚动条整体样式*/ /*高宽分别对应横竖滚动条的尺寸*/
   width: 5px;
   height: 6px;
-  scrollbar-arrow-color:rgba(0,0,0,0);
+  scrollbar-arrow-color: rgba(0, 0, 0, 0);
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: #627fff;
   //background-color: rgba(144,147,153,.3);
   border-radius: 3px;
   transition: background-color .3s;
 }
-.el-table__body-wrapper::-webkit-scrollbar{
+
+.el-table__body-wrapper::-webkit-scrollbar {
   width: 6px;
   height: 8px;
 }
-.el-table__body-wrapper::-webkit-scrollbar-thumb{
-  background-color:rgba(144,147,153,0);
+
+.el-table__body-wrapper::-webkit-scrollbar-thumb {
+  background-color: rgba(144, 147, 153, 0);
   border-radius: 3px;
   transition: background-color 0.2s;
 }
-.el-table__body-wrapper:hover::-webkit-scrollbar-thumb{
+
+.el-table__body-wrapper:hover::-webkit-scrollbar-thumb {
   transition: background-color 0.2s;
-  background-color:rgba(144,147,153,.3);
+  background-color: rgba(144, 147, 153, .3);
 }
