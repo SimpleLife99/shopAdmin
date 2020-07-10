@@ -92,6 +92,7 @@
         components: {countTo, pieChart, barChart, lineChart},
         computed: {},
         created() {
+            console.log(process.env.BASE_URL)
         },
         mounted() {
         },

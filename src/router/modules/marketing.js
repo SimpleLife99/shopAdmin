@@ -1,13 +1,21 @@
 import Layout from '@/layout'
 
 const marketing = {
-    path : '/marketing',
-    name : 'Marketing',
+    path: '/marketing',
+    name: 'Marketing',
     component: Layout,
-    meta: {
-        title: '订单管理',
-        icon: 'dianyingpiao'
-    },
+    redirect: '/marketing/index',
+    children: [
+        {
+            path: 'index',
+            name: 'Activity',
+            component: () => import('@/views/marketing/index'),
+            meta: {
+                title: '营销活动',
+                icon: 'dianyingpiao'
+            }
+        }
+    ]
 }
 
 export default marketing

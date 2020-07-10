@@ -10,6 +10,7 @@ Vue.use(VueRouter)
 import Layout from '@/layout'
 /* 导入模块路由 */
 import orderRouter from "./modules/order";
+import marketing from "./modules/marketing";
 /*
 * constantRoutes
 *   代表那些不需要动态判断权限的路由，如登录页、404、等通用页面。
@@ -36,7 +37,8 @@ export const constantRoutes = [
         meta: {title: '登录'},
         hidden: true,
         component: () => import('@/views/login/login')
-    }
+    },
+    marketing
 ];
 export const asyncRoutes = [
     {
@@ -65,51 +67,10 @@ export const asyncRoutes = [
         ]
     },
     orderRouter,
-    {
-        path: '/activity',
-        redirect: '/activity/assemble/activityList',
-        name: 'Activety',
-        component: Layout,
-        meta: {roles: ['admin'], title: '营销', icon: 'dianyingpiao'},
-        children: [
-            {
-                path: 'assemble',
-                name: 'actAssemble',
-                component: () => import('@/views/activity/assemble/index'),
-                children: [
-                    {
-                        path: 'activityList',
-                        name: 'activityList',
-                        component: () => import('@/views/activity/assemble/index'),
-                        meta: {
-                            title: '拼团活动',
-                        }
-                    },
-                    {
-                        path: 'operation',
-                        name: 'assOperation',
-                        hidden: true,
-                        component: () => import('@/views/activity/assemble/activityOperation'),
-                        meta: {
-                            title: '创建活动'
-                        }
-                    }
-                ]
-            },
-            {
-                path: "seckill",
-                name: 'actSeckill',
-                component: () => import('@/views/activity/seckill/index'),
-                meta: {
-                    title: '秒杀活动',
-                }
-            }
-        ]
-    }
 ]
 
 const createRoute = () => new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     base: 'app/',
     // base: process.env.BASE_URL,
     routes: constantRoutes,

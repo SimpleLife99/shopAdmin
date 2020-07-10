@@ -6,5 +6,8 @@ module.exports = {
                 javascriptEnabled: true,
             }
         }
-    }
+    },
+
+    publicPath: "./",
+    assetsDir: "static",
 }

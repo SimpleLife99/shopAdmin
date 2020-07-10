@@ -90,13 +90,13 @@
 </template>
 
 <script>
-    // import http from '@/http/api/login'
+    import http from '@/http/api/login'
 
     export default {
         name: "login",
         data() {
             return {
-                currentStatus:'register',
+                currentStatus:'login',
                 isCanView:false,        // 密码是否可见 true可见 false不可见
                 userName: 'suqi',
                 password: '123',
@@ -215,6 +215,10 @@
             getAuthCode() {
                 // 获取登录验证
                 this.$store.dispatch('getAuthCode')
+            },
+            async adminlogin(){
+                let Data = await http.userLogin({})
+                console.log(Data)
             }
         }
     }
