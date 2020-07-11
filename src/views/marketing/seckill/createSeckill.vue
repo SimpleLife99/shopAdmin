@@ -1,12 +1,12 @@
 <template>
     <div class="seckill">
-        <h2>秒杀活动</h2>
+        <h2>创建活动</h2>
     </div>
 </template>
 
 <script>
     export default {
-        name: "index"
+        name: "createSeckill"
     }
 </script>
 

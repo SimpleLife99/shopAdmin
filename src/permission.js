@@ -17,21 +17,8 @@ router.beforeEach(async (to, from, next) => {
         if (to.path === '/login') {
             next({path: '/', replace: true})
         } else {
-            const hasRoles = store.getters.userRoles && store.getters.userRoles.length > 0
-            if (hasRoles) {
-                next()
-            } else {
-                try {
-                    const roles = await store.dispatch('getUserinfo')
-                    const accessRoutes = await store.dispatch('generateRoutes', roles)
-                    // 动态添加可访问路由
-                    router.addRoutes(accessRoutes)
-                    // next({replace: true})
-                    next({ ...to,replace: true })
-                } catch (e) {
-                    next({path: '/login', replace: true})
-                }
-            }
+            await store.dispatch('generateRoutes')  // 把路由存储到vuex渲染侧边栏
+            next()
         }
     } else {
         // 用户未登录 路由重定向到 登录页

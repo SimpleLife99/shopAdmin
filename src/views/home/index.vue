@@ -1,5 +1,29 @@
 <template>
     <div class="home">
+        <div class="searchBox">
+            <div class="choiceDate">
+                <div
+                        :class="[item.id == currentDate ? 'dateItemActive':'' ,'dateItem' ]"
+                        v-for="(item) in choiceDate"
+                        :key="item.id"
+                        @click="changeDateItem(item.id)"
+                >{{ item.name }}
+                </div>
+                <div class="slipBox" :style="{ left:slipLeft+'px'}"></div>
+            </div>
+            <div class="choiceTime">
+                <el-date-picker
+                        v-model="dateTime"
+                        type="daterange"
+                        range-separator="至"
+                        start-placeholder="开始日期"
+                        end-placeholder="结束日期">
+                </el-date-picker>
+                <div class="confirmTime" @click="changeDateTime">查找</div>
+            </div>
+        </div>
+
+
         <div class="dataBoard">
             <div class="line-chart">
                 <!-- 折线图 -->
@@ -10,12 +34,14 @@
             </div>
             <div class="orderData">
                 <div class="orderTitle">
-                    <div class="navItem" v-for="(item,index) in orderTabTitle" :key="index" @click="changeOrderTab(index)">
+                    <div class="navItem" v-for="(item,index) in orderTabTitle" :key="index"
+                         @click="changeOrderTab(index)">
                         <div class="navLine">{{ item }}</div>
                     </div>
                 </div>
                 <div class="orderContent" v-if="orderTabIndex === 0">
-                    <countTo :startVal="countNum.startVal" :endVal="100" :duration="countNum.duration" :autoplay="countNum.autoplay"></countTo>
+                    <countTo :startVal="countNum.startVal" :endVal="100" :duration="countNum.duration"
+                             :autoplay="countNum.autoplay"></countTo>
                 </div>
                 <div class="orderContent" v-if="orderTabIndex === 1">
                     <table border="0">
@@ -80,11 +106,15 @@
         data() {
             return {
                 orderTabIndex: 0,
-                orderTabTitle: ['订单明细', '金额明细'],    //  订单明细的tab切换
-                countNum:{                                //    滚动数字通用配置项
-                    startVal:0,
-                    duration:3000,
-                    autoplay:true
+                choiceDate: [{id: 1, name: '默认'}, {id: 2, name: '今日'}, {id: 3, name: '本周'}, {id: 4, name: '本月'}],
+                currentDate: 1,
+                dateTime: null,                                 // 选择的时间段
+                slipLeft: 0,                                  //  滑块位置
+                orderTabTitle: ['订单明细', '金额明细'],        //  订单明细的tab切换
+                countNum: {                                   // 滚动数字通用配置项
+                    startVal: 0,
+                    duration: 3000,
+                    autoplay: true
                 }
             }
         },
@@ -92,12 +122,23 @@
         components: {countTo, pieChart, barChart, lineChart},
         computed: {},
         created() {
-            console.log(process.env.BASE_URL)
         },
         mounted() {
         },
         methods: {
-            changeOrderTab(index){
+            changeDateItem(id) {
+                this.currentDate = id
+                this.slipLeft = (id - 1) * 80
+            },
+            changeDateTime() {
+                if (! this.dateTime == null) {
+                    console.log(this.dateTime)
+                } else {
+                    this.$message.error('先选择时间，再查找！');
+                }
+
+            },
+            changeOrderTab(index) {
                 this.orderTabIndex = index
             }
         }

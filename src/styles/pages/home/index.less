@@ -7,9 +7,71 @@
 inset 8px 8px 15px rgba(0, 0, 0, 0.1),
   inset -8px -8px 15px rgba(255, 255, 255, 1);
 @areaMarginTop: 24px;
+@areaMarginBottom: 24px;
+@app-bgColor: #6b6eff;
 
 .home {
   padding: @app-main-padding;
+
+  .searchBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: @areaMarginBottom;
+
+    .choiceDate {
+      width: 320px;
+      height: 30px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background-color: #ffffff;
+
+      .dateItem {
+        width: 80px;
+        height: 30px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border-radius: 15px;
+        position: relative;
+        z-index: 10;
+        justify-content: center;
+      }
+
+      .dateItemActive {
+        color: #FFFFFF;
+      }
+
+      .slipBox {
+        width: 80px;
+        height: 30px;
+        border-radius: 15px;
+        background-color: @app-bgColor;
+        position: absolute;
+        left: 0;
+        z-index: 5;
+        transition: left 0.3s ease;
+      }
+    }
+
+    .choiceTime {
+      display: flex;
+      margin-left: 10px;
+      .confirmTime {
+        cursor: pointer;
+        margin-left: 10px;
+        width: 80px;
+        height: 30px;
+        color: #FFFFFF;
+        display: flex;
+        border-radius: 15px;
+        align-items: center;
+        justify-content: center;
+        background-color: @app-bgColor;
+      }
+    }
+  }
 
   .dataBoard {
     display: flex;
@@ -66,26 +128,31 @@ inset 8px 8px 15px rgba(0, 0, 0, 0.1),
           }
         }
       }
-      .orderContent{
-        table{
+
+      .orderContent {
+        table {
           border: 0;
           width: 100%;
-          border-collapse:collapse;
-          th{
+          border-collapse: collapse;
+
+          th {
             font-size: 16px;
             font-weight: unset;
             color: @themeColor;
           }
-          td{
+
+          td {
             font-size: 14px;
             text-align: center;
             color: @article_color;
           }
-          th:first-child{
+
+          th:first-child {
             text-align: left;
             padding-left: 30px
           }
-          td:first-child{
+
+          td:first-child {
             text-align: left;
             padding-left: 30px
           }

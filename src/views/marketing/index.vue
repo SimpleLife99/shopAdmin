@@ -18,7 +18,7 @@
                             <span>订单支付返利，提升订单转化率</span>
                         </div>
                     </div>
-                    <div class="hotItem">
+                    <div class="hotItem" @click="activityRouter('Seckill')">
                         <div class="itemIcon">
                             <svg class="icon" aria-hidden="true">
                                 <use xlink:href="#iconmiaoshaxuanzhong-copy"></use>
@@ -68,7 +68,7 @@
                     <span>提高下单转化率</span>
                 </div>
                 <div class="activityContent">
-                    <div class="activityItem" @click="login">
+                    <div class="activityItem">
                         <div class="itemTop">
                             <div class="activityIcon">
                                 <svg class="icon" aria-hidden="true">
@@ -120,7 +120,7 @@
                             <span>快速拉新，统计拉新信息</span>
                         </div>
                     </div>
-                    <div class="activityItem" @click="login">
+                    <div class="activityItem">
                         <div class="itemTop">
                             <div class="activityIcon">
                                 <svg class="icon" aria-hidden="true">
@@ -133,7 +133,7 @@
                             <span>提前发售，到时配货</span>
                         </div>
                     </div>
-                    <div class="activityItem" @click="login">
+                    <div class="activityItem">
                         <div class="itemTop">
                             <div class="activityIcon">
                                 <svg class="icon" aria-hidden="true">
@@ -146,7 +146,7 @@
                             <span>订单支付返利，提升订单转化率</span>
                         </div>
                     </div>
-                    <div class="activityItem" @click="login">
+                    <div class="activityItem">
                         <div class="itemTop">
                             <div class="activityIcon">
                                 <svg class="icon" aria-hidden="true">
@@ -157,6 +157,25 @@
                         </div>
                         <div class="itemBottom">
                             <span>针对内部员工优惠</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="marketTitle">
+                    <p>店铺工具</p>
+                    <span>提高下单转化率</span>
+                </div>
+                <div class="activityContent shoputils">
+                    <div class="activityItem">
+                        <div class="itemTop">
+                            <div class="activityIcon">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#iconkefu"></use>
+                                </svg>
+                            </div>
+                            <p>客服设置</p>
+                        </div>
+                        <div class="itemBottom">
+                            <span>开启小程序客服功能</span>
                         </div>
                     </div>
                 </div>
@@ -178,7 +197,10 @@
              async login(){
                  let Data = await http.userLogin({})
                  console.log(Data)
-             }
+             },
+            activityRouter(type){
+                this.$router.push({name: type,})
+            }
         }
     }
 </script>

@@ -65,7 +65,6 @@
                         return true
                     }
                 })
-
                 // 当只有一个子路由器时，默认显示子路由器
                 if (showingChildren.length === 1) {
                     return true

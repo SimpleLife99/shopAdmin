@@ -19,6 +19,13 @@ import marketing from "./modules/marketing";
 * */
 export const constantRoutes = [
     {
+        path: '/login',
+        name: 'Login',
+        meta: {title: '登录'},
+        hidden: true,
+        component: () => import('@/views/login/login')
+    },
+    {
         path: '/',
         component: Layout,
         redirect: '/home',
@@ -31,14 +38,8 @@ export const constantRoutes = [
             }
         ]
     },
-    {
-        path: '/login',
-        name: 'Login',
-        meta: {title: '登录'},
-        hidden: true,
-        component: () => import('@/views/login/login')
-    },
-    marketing
+    marketing,
+    orderRouter
 ];
 export const asyncRoutes = [
     {
@@ -66,7 +67,6 @@ export const asyncRoutes = [
             }
         ]
     },
-    orderRouter,
 ]
 
 const createRoute = () => new VueRouter({

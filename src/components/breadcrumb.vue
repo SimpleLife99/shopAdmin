@@ -35,10 +35,11 @@
             getBreadcrumb() {
                 //$route.matched type:Array 包含当前路由的所有嵌套路径片段的路由记录
                 let matched = this.$route.matched.filter(item => item.meta && item.meta.title)
-                const first = matched[0]
-                if (!this.isHomePage(first)) {
-                    matched = [{path: '/home', meta: {title: '首页'}}].concat(matched)
-                }
+                // 这里修改默认不把首页填充到第一个
+                // const first = matched[0]
+                // if (!this.isHomePage(first)) {
+                //     matched = [{path: '/home', meta: {title: '首页'}}].concat(matched)
+                // }
                 this.levelList = matched.filter(item => item.meta && item.meta.title && item.meta.breadcrumb !== false)
             },
             isHomePage(route) {

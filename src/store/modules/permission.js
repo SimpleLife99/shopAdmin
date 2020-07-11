@@ -1,55 +1,21 @@
-import {asyncRoutes, constantRoutes} from '@/router'
-/**
- * 使用 meta.role 确定当前用户是否具有权限
- */
-function hasPermission(roles, route) {
-    if (route.meta && route.meta.roles) {
-        return roles.some(role => route.meta.roles.includes(role))
-    } else {
-        return true
-    }
-}
-
-/**
- *  递归异步过滤路由表
- */
-export function filterAsyncRoutes(routes, roles) {
-    const res = []
-    routes.forEach(route => {
-        const tmp = {...route}
-        if (hasPermission(roles, tmp)) {
-            if (tmp.children) {
-                tmp.children = filterAsyncRoutes(tmp.children, roles)
-            }
-            res.push(tmp)
-        }
-    })
-
-    return res
-}
+import {constantRoutes} from '@/router'
 
 const permission = {
     state: {
-        routes: [],
+        routes: [],         // 用于渲染侧边导航栏
         addRoutes: []
     },
     mutations: {
         SET_ROUTES: (state, routes) => {
             state.addRoutes = routes
-            state.routes = constantRoutes.concat(routes)
+            state.routes = routes
         }
     },
     actions: {
-        generateRoutes({commit}, roles) {
+        generateRoutes({commit}) {
             return new Promise(resolve => {
-                let accessedRoutes
-                if (roles.includes('admin')) {
-                    accessedRoutes = asyncRoutes || []
-                } else {
-                    accessedRoutes = filterAsyncRoutes(asyncRoutes, roles)
-                }
-                commit('SET_ROUTES', accessedRoutes)
-                resolve(accessedRoutes)
+                commit('SET_ROUTES', constantRoutes)
+                resolve(constantRoutes)
             })
         }
     }

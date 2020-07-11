@@ -55,24 +55,31 @@
                         trigger: 'item',
                         formatter: '{a} <br/>{b} : {c} ({d}%)'
                     },
-                    legend: {
-                        left: 'center',
-                        bottom: '10',
-                        data: ['未支付', '已支付', '待配送', '已送达', '已收货', '已退款']
-                    },
+                    // legend: {
+                    //     left: 'center',
+                    //     bottom: '10',
+                    //     data: ['未支付', '已支付', '待配送', '已送达', '已收货', '已退款']
+                    // },
+                    color:['#ffc700','#2c4768','#ff0692','#655be9','#e455fe','#318eff'],
                     series: [
                         {
                             name: '订单状态信息',
                             type: 'pie',
-                            roseType: 'radius',
-                            radius: [20, 95],
+                            radius: [70, 100],
+                            labelLine: {
+                                show: false
+                            },
+                            label: {
+                                show: false,
+                                position: 'center'
+                            },
                             data: [
                                 {value: 235, name: '未支付'},
                                 {value: 274, name: '已支付'},
                                 {value: 310, name: '待配送'},
                                 {value: 335, name: '已送达'},
                                 {value: 400, name: '已收货'},
-                                {value: 50, name: '已退款'}
+                                {value: 100, name: '已退款'}
                             ]
                         }
                     ]

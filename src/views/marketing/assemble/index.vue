@@ -22,5 +22,5 @@
 </script>
 
 <style scoped lang="less">
-@import "./../../../styles/pages/assemble/assembleList";
+@import "../../../styles/pages/assemble/assembleList";
 </style>
