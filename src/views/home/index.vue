@@ -22,75 +22,182 @@
                 <div class="confirmTime" @click="changeDateTime">查找</div>
             </div>
         </div>
-
-
-        <div class="dataBoard">
-            <div class="line-chart">
-                <!-- 折线图 -->
-                <p class="chartTitle">
-                    <span>订单明细</span>
-                </p>
-                <lineChart/>
-            </div>
-            <div class="orderData">
-                <div class="orderTitle">
-                    <div class="navItem" v-for="(item,index) in orderTabTitle" :key="index"
-                         @click="changeOrderTab(index)">
-                        <div class="navLine">{{ item }}</div>
+        <!--    数据模块    -->
+        <div class="dataModular">
+            <div class="modularItem">
+                <div class="modularContainer">
+                    <p class="modularTitle">会员</p>
+                    <div class="memberData">
+                        <div class="modularIcon">
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#iconpintuan"></use>
+                            </svg>
+                        </div>
+                        <h2>
+                            <countTo :startVal="countNum.startVal" :endVal="300" :duration="countNum.duration"
+                                     :autoplay="countNum.autoplay"></countTo>
+                        </h2>
+                        <p>人数</p>
                     </div>
                 </div>
-                <div class="orderContent" v-if="orderTabIndex === 0">
-                    <countTo :startVal="countNum.startVal" :endVal="100" :duration="countNum.duration"
-                             :autoplay="countNum.autoplay"></countTo>
+            </div>
+            <div class="modularItem">
+                <div class="modularContainer">
+                    <p class="modularTitle">商品(件)</p>
+                    <div class="modularAllDate">
+                        <h2>
+                            <countTo :startVal="countNum.startVal" :endVal="3820" :duration="countNum.duration"
+                                     :autoplay="countNum.autoplay"></countTo>
+                        </h2>
+                        <img src="@/assets/home/data1.png" alt="">
+                    </div>
+                    <div class="modularMessage">
+                        <div class="messageLeft">
+                            <p class="msgTitle">在售商品</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="324" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                        <div class="messageRight">
+                            <p class="msgTitle">下架商品</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="100" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="orderContent" v-if="orderTabIndex === 1">
-                    <table border="0">
-                        <tr style="height: 60px;background-color: #f4f6ff">
-                            <th width="40%">类别</th>
-                            <th width="20%">支付宝</th>
-                            <th width="20%">微信</th>
-                            <th width="20%">总计</th>
-                        </tr>
-                        <tr>
-                            <td>昨日订单总量(笔）</td>
-                            <td>
-                                <countTo
-                                        :startVal="countNum.startVal"
-                                        :endVal="128"
-                                        :duration="countNum.duration"
-                                        :autoplay="countNum.autoplay"
-                                ></countTo>
-                            </td>
-                            <td>
-                                <countTo
-                                        :startVal="countNum.startVal"
-                                        :endVal="128"
-                                        :duration="countNum.duration"
-                                        :autoplay="countNum.autoplay"
-                                ></countTo>
-                            </td>
-                            <td>
-                                <countTo
-                                        :startVal="countNum.startVal"
-                                        :endVal="128"
-                                        :duration="countNum.duration"
-                                        :autoplay="countNum.autoplay"
-                                ></countTo>
-                            </td>
-                        </tr>
-                    </table>
+            </div>
+            <div class="modularItem">
+                <div class="modularContainer">
+                    <p class="modularTitle">支付订单(笔)</p>
+                    <div class="modularAllDate">
+                        <h2>
+                            <countTo :startVal="countNum.startVal" :endVal="3860" :duration="countNum.duration"
+                                     :autoplay="countNum.autoplay"></countTo>
+                        </h2>
+                        <img src="@/assets/home/data2.png" alt="">
+                    </div>
+                    <div class="modularMessage">
+                        <div class="messageLeft">
+                            <p class="msgTitle">微信</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="354" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                        <div class="messageRight">
+                            <p class="msgTitle">支付宝</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="568" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modularItem">
+                <div class="modularContainer">
+                    <p class="modularTitle">销售额(元)</p>
+                    <div class="modularAllDate">
+                        <h2>
+                            <countTo :startVal="countNum.startVal" :endVal="3540" :duration="countNum.duration"
+                                     :autoplay="countNum.autoplay"></countTo>
+                        </h2>
+                        <img src="@/assets/home/data3.png" alt="">
+                    </div>
+                    <div class="modularMessage">
+                        <div class="messageLeft">
+                            <p class="msgTitle">微信</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="1254" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                        <div class="messageRight">
+                            <p class="msgTitle">支付宝</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="1800" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modularItem">
+                <div class="modularContainer">
+                    <p class="modularTitle">退款订单(件)</p>
+                    <div class="modularAllDate">
+                        <h2>
+                            <countTo :startVal="countNum.startVal" :endVal="2574" :duration="countNum.duration"
+                                     :autoplay="countNum.autoplay"></countTo>
+                        </h2>
+                        <img src="@/assets/home/data4.png" alt="">
+                    </div>
+                    <div class="modularMessage">
+                        <div class="messageLeft">
+                            <p class="msgTitle">微信</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="2150" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                        <div class="messageRight">
+                            <p class="msgTitle">支付宝</p>
+                            <p class="msgData">
+                                <countTo :startVal="countNum.startVal" :endVal="100" :duration="countNum.duration"
+                                         :autoplay="countNum.autoplay"></countTo>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="chartArea">
-            <div class="pie-chart">
-                <!-- 饼状图 -->
-                <pieChart/>
+        <!--    数据面板    -->
+        <div class="messageBoard">
+            <div class="boardLeft">
+                <div class="boardTitle">
+                    <div class="littleBlock"></div>
+                    <p>订单金额图</p>
+                </div>
+                <div class="line-chart">
+                    <!--    折线图    -->
+                    <lineChart/>
+                </div>
             </div>
-            <div class="bar-chart">
-                <!--柱状图-->
-                <barChart/>
+            <div class="boardRight">
+                <div class="boardTitle">
+                    <div class="littleBlock"></div>
+                    <p>订单占比</p>
+                </div>
+                <div class="pie-chart">
+                    <!-- 饼状图 -->
+                    <pieChart :pieData = pieMsg />
+                    <div class="pieCenter">
+                        <div class="centerNum">
+                            <countTo :startVal="countNum.startVal" :endVal="100" :duration="countNum.duration"
+                                     :autoplay="countNum.autoplay"></countTo>
+                        </div>
+                        <p class="centerText">总订单</p>
+                    </div>
+                </div>
             </div>
+        </div>
+        <!--   订单数据   -->
+        <div class="orderBoard">
+            <div class="boardLeft">
+                <div class="boardTitle">
+                    <div class="littleBlock"></div>
+                    <p>商品销量Top10</p>
+                </div>
+                <!--   商品条形图   -->
+                <div class="bar-chart">
+                    <!--柱状图-->
+                    <barChart/>
+                </div>
+            </div>
+            <div class="boardRight"></div>
         </div>
     </div>
 </template>
@@ -108,14 +215,23 @@
                 orderTabIndex: 0,
                 choiceDate: [{id: 1, name: '默认'}, {id: 2, name: '今日'}, {id: 3, name: '本周'}, {id: 4, name: '本月'}],
                 currentDate: 1,
-                dateTime: null,                                 // 选择的时间段
+                dateTime: null,                               // 选择的时间段
                 slipLeft: 0,                                  //  滑块位置
-                orderTabTitle: ['订单明细', '金额明细'],        //  订单明细的tab切换
+                orderTabTitle: ['订单明细', '金额明细'],         //  订单明细的tab切换
                 countNum: {                                   // 滚动数字通用配置项
                     startVal: 0,
                     duration: 3000,
                     autoplay: true
-                }
+                },
+                /* 饼状图所需数据 */
+                pieMsg:[
+                    {value: 235, name: '未支付'},
+                    {value: 274, name: '已支付'},
+                    {value: 310, name: '待配送'},
+                    {value: 335, name: '已送达'},
+                    {value: 400, name: '已收货'},
+                    {value: 100, name: '已退款'}
+                ]
             }
         },
         // eslint-disable-next-line vue/no-unused-components

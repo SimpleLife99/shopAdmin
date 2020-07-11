@@ -22,7 +22,7 @@
             },
             height: {
                 type: String,
-                default: '300px'
+                default: '400px'
             }
         },
         data() {
@@ -52,7 +52,6 @@
         methods: {
             initChart() {
                 this.chart = echarts.init(this.$el, 'macarons')
-
                 this.chart.setOption({
                     xAxis: {
                         type: 'category',
@@ -61,10 +60,20 @@
                             formatter: function (value) {
                                 return value.substr(0, 4).split('').join('\n');
                             }
+                        },
+                        axisLine:{
+                            lineStyle:{
+                                color:'#aaaaaa'
+                            }
                         }
                     },
                     yAxis: {
-                        type: 'value'
+                        type: 'value',
+                        axisLine:{
+                            lineStyle:{
+                                color:'#aaaaaa'
+                            }
+                        }
                     },
                     tooltip: {
                         trigger: 'axis',
@@ -92,7 +101,7 @@
                         name: '销量',
                         data: [270, 200, 150, 80, 70, 110, 130, 110, 80, 10, 26, 89],
                         type: 'bar',
-                        barWidth: '40%',
+                        barWidth: 2,
                         stack: 'vistors',
                         animation: true,
                         showBackground: true,
@@ -100,9 +109,10 @@
                             color: 'rgba(220,220,220,0.2)'
                         },
                         itemStyle: {
-                            normal: {
-                                color: '#627FFF'
-                            }
+                            color: '#6b6eff',
+                            borderColor:'#6b6eff',
+                            borderWidth:8,
+                            barBorderRadius:3
                         }
                     }]
                 })

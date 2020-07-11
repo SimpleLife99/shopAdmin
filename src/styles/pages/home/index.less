@@ -6,6 +6,7 @@
 0px 0px 0px rgba(255, 255, 255, 1),
 inset 8px 8px 15px rgba(0, 0, 0, 0.1),
   inset -8px -8px 15px rgba(255, 255, 255, 1);
+
 @areaMarginTop: 24px;
 @areaMarginBottom: 24px;
 @app-bgColor: #6b6eff;
@@ -58,6 +59,7 @@ inset 8px 8px 15px rgba(0, 0, 0, 0.1),
     .choiceTime {
       display: flex;
       margin-left: 10px;
+
       .confirmTime {
         cursor: pointer;
         margin-left: 10px;
@@ -70,119 +72,215 @@ inset 8px 8px 15px rgba(0, 0, 0, 0.1),
         justify-content: center;
         background-color: @app-bgColor;
       }
+
+      .el-date-editor {
+        border-radius: 16px;
+      }
     }
   }
 
-  .dataBoard {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
+  /* 数据块 */
 
-    .line-chart {
-      flex: 1;
-      border-radius: @areaBorderRadius;
+  .dataModular {
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: @areaMarginBottom;
+
+    .modularItem {
+      width: 336px;
+      height: 200px;
       margin-right: 20px;
-      position: relative;
+      background-color: #FFFFFF;
+      border: solid 1px #FFFFFF;
+      border-radius: 10px;
+      box-shadow: 0px 0px 16px 1px rgba(20, 23, 56, 0.05);
+      transition: box-shadow 0.3s ease;
 
-      .chartTitle {
-        position: absolute;
-        left: 20px;
-        top: 10px;
-        z-index: 10;
-        font-size: 14px;
+      .modularContainer {
+        padding: 20px 23px;
 
-        span {
-          display: block;
-          position: relative;
+        .modularTitle {
+          font-size: 20px;
+          font-weight: bold;
+          color: @first_level_title;
         }
 
-        span:before {
-          position: absolute;
-          content: '';
-          width: 5px;
-          height: 20px;
-          top: -1px;
-          left: -8px;
-          background-color: @themeColor;
+        .memberData {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 10px;
+
+          .modularIcon {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            background-color: #e8ecff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #344cc2;
+          }
+
+          h2 {
+            margin-top: 5px;
+            font-size: 28px;
+          }
+
+          p {
+            font-size: 16px;
+          }
+        }
+
+        .modularAllDate {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          h2 {
+            font-size: 30px;
+          }
+        }
+
+        .modularMessage {
+          margin-top: 30px;
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+
+          .messageLeft, .messageRight {
+            .msgTitle {
+              font-size: 16px;
+              color: @first_level_title;
+            }
+
+            .msgData {
+              font-size: 16px;
+              font-weight: bold;
+              margin-top: 10px;
+            }
+          }
+
+          .messageLeft {
+            .msgData {
+              color: #0abd73;
+            }
+          }
+
+          .messageRight {
+            text-align: right;
+
+            .msgData {
+              color: #6b6eff;
+            }
+          }
         }
       }
     }
 
-    .orderData {
-      width: 30%;
-      min-height: 300px;
-      background-color: #FFFFFF;
-      border-radius: @areaBorderRadius;
+    .modularItem:hover {
+      box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.1);
+    }
 
-      .orderTitle {
-        padding: 24px 30px 20px 30px;
-        display: flex;
-        align-items: center;
+    .modularItem:first-child {
+      width: 230px;
+    }
 
-        .navItem {
-          width: 50%;
+    .modularItem:last-child {
+      margin-right: 0;
+    }
+  }
 
-          .navLine {
-            cursor: pointer;
-          }
-        }
+  // 标签前的小块
+  .boardTitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: @areaMarginBottom;
+
+    .littleBlock {
+      width: 5px;
+      height: 20px;
+      margin-right: 5px;
+      border-radius: 3px;
+      background-color: @app-bgColor;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: bold;
+      color: @first_level_title;
+    }
+  }
+
+  /*----  数据看板 饼状图折线图  ----*/
+
+  .messageBoard {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    margin-bottom: @areaMarginBottom;
+
+    .boardLeft {
+      width: 60%;
+
+      .line-chart {
+        padding: 10px 0;
+        border-radius: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.1);
       }
+    }
 
-      .orderContent {
-        table {
-          border: 0;
-          width: 100%;
-          border-collapse: collapse;
+    .boardRight {
+      flex: 1;
+      margin-left: 20px;
 
-          th {
+      .pie-chart {
+        padding: 10px 0;
+        border-radius: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.1);
+        position: relative;
+
+        .pieCenter {
+          width: 68px;
+          height: 68px;
+          position: absolute;
+          z-index: 10;
+          top: 50%;
+          margin-left: -34px;
+          margin-top: -34px;
+          left: 50%;
+          text-align: center;
+
+          .centerNum {
+            font-size: 35px;
+            color: #627fff;
+          }
+
+          .centerText {
             font-size: 16px;
-            font-weight: unset;
-            color: @themeColor;
-          }
-
-          td {
-            font-size: 14px;
-            text-align: center;
-            color: @article_color;
-          }
-
-          th:first-child {
-            text-align: left;
-            padding-left: 30px
-          }
-
-          td:first-child {
-            text-align: left;
-            padding-left: 30px
+            color: @third_level_title;
           }
         }
       }
     }
   }
-
-  .chartArea {
-    margin-top: @areaMarginTop;
-    padding: 12px;
-    border-radius: @areaBorderRadius;
-    min-height: 200px;
+  /*----  订单数据  ----*/
+  .orderBoard{
     display: flex;
-    flex-direction: row;
-    align-items: self-start;
-    background-color: @app-main-background-color;
-    box-shadow: @boxshadow;
-
-    .pie-chart {
-      width: 40%;
-      background-color: #FFFFFF;
-      border-radius: @areaBorderRadius;
-    }
-
-    .bar-chart {
-      flex: 1;
-      background-color: #FFFFFF;
-      border-radius: @areaBorderRadius;
-      margin-left: 15px;
+    margin-bottom: @areaMarginBottom;
+    .boardLeft{
+      width: 60%;
+      .bar-chart{
+        padding: 10px 0;
+        border-radius: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 2px 7px 0px rgba(0, 0, 0, 0.1);
+      }
     }
   }
 }

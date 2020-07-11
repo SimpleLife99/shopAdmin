@@ -22,7 +22,7 @@
             },
             height: {
                 type: String,
-                default: '300px'
+                default: '350px'
             }
         },
         data() {
@@ -37,16 +37,6 @@
             initChart() {
                 this.chart = echarts.init(this.$el, 'macarons')
                 this.chart.setOption({
-                    // title: {
-                    //     text: '订单明细',
-                    //     top: 10,
-                    //     left: 10,
-                    //     textStyle: {
-                    //         fontSize: 14,
-                    //         fontWeight: 'normal',
-                    //         color: '#333'
-                    //     }
-                    // },
                     tooltip: {
                         trigger: 'axis'
                     },
@@ -69,10 +59,20 @@
                     xAxis: {
                         type: 'category',
                         boundaryGap: false,
-                        data: ['06-11', '06-12', '06-13', '06-14', '06-15', '06-16', '06-17', '06-18']
+                        data: ['06-11', '06-12', '06-13', '06-14', '06-15', '06-16', '06-17', '06-18'],
+                        axisLine:{
+                            lineStyle:{
+                                color:'#aaaaaa'
+                            }
+                        }
                     },
                     yAxis: {
-                        type: 'value'
+                        type: 'value',
+                        axisLine:{
+                            lineStyle:{
+                                color:'#aaaaaa'
+                            }
+                        }
                     },
                     series: [
                         {
@@ -87,7 +87,7 @@
                                     color: 'rgba(98,127,255,0.5)'
                                 }, {
                                     offset: 1,
-                                    color: 'rgba(164,181,255,0.22)'
+                                    color: 'rgba(98,127,255,0.5)'
                                 }])
                             }
                         },
@@ -100,10 +100,10 @@
                             areaStyle: {
                                 color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                                     offset: 0,
-                                    color: 'rgba(201,107,255,0.5)'
+                                    color: 'rgba(201,107,255,0.4)'
                                 }, {
                                     offset: 1,
-                                    color: 'rgba(255,255,255,0.2)'
+                                    color: 'rgba(201,107,255,0.4)'
                                 }])
                             },
                         }
@@ -116,7 +116,6 @@
 
 <style scoped lang="less">
     .lineChartitem {
-        background-color: #FFFFFF;
         border-radius: 8px;
     }
 </style>
