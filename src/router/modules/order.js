@@ -24,6 +24,12 @@ const orderRouter = {
             component: () => import('@/views/order/refundOrder')
         },
         {
+            path: 'presellOrder',
+            name: 'PresellOrder',
+            meta: {title:'预售订单列表'},
+            component:()=>import('@/views/order/presellOrder')
+        },
+        {
             path: 'sendSetting',
             name: 'sendSetting',
             meta: {title: '发货设置'},
