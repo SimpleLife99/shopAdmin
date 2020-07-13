@@ -197,7 +197,58 @@
                     <barChart/>
                 </div>
             </div>
-            <div class="boardRight"></div>
+            <div class="boardRight">
+                <!--  门店排行  -->
+                <div class="boardContainer">
+                    <div class="boardTitle">
+                        <div class="littleBlock"></div>
+                        <p>门店排行Top5</p>
+                    </div>
+                    <div class="storeRanking">
+                        <div class="paymentMethodTab">
+                            <el-button :class="[ currentPay=== 'weixin' ? 'paymentActive':'','paymentBtn']" @click="changeStoreRanking('weixin')" type="primary" round>微信</el-button>
+                            <el-button :class="[ currentPay=== 'zhifubao' ? 'paymentActive':'','paymentBtn']" @click="changeStoreRanking('zhifubao')" type="primary" round>支付宝</el-button>
+                        </div>
+                        <div class="payMentList">
+                            <el-table
+                                    :data="storeRanking"
+                                    :header-cell-style="{background:'#f2f5ff'}"
+                                    style="width: 100%">
+                                <el-table-column
+                                        align="center"
+                                        prop="sort"
+                                        label="排序" >
+                                </el-table-column>
+                                <el-table-column
+                                        align="center"
+                                        prop="name"
+                                        label="门店" >
+                                </el-table-column>
+                                <el-table-column
+                                        align="center"
+                                        prop="effectiveOrder"
+                                        label="有效订单">
+                                </el-table-column>
+                                <el-table-column
+                                        align="center"
+                                        prop="Actualpayment"
+                                        label="实付款">
+                                </el-table-column>
+                                <el-table-column
+                                        align="center"
+                                        prop="totalOrder"
+                                        label="总订单">
+                                </el-table-column>
+                                <el-table-column
+                                        align="center"
+                                        prop="totalMoney"
+                                        label="总金额">
+                                </el-table-column>
+                            </el-table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -215,6 +266,7 @@
                 orderTabIndex: 0,
                 choiceDate: [{id: 1, name: '默认'}, {id: 2, name: '今日'}, {id: 3, name: '本周'}, {id: 4, name: '本月'}],
                 currentDate: 1,
+                currentPay:'weixin',
                 dateTime: null,                               // 选择的时间段
                 slipLeft: 0,                                  //  滑块位置
                 orderTabTitle: ['订单明细', '金额明细'],         //  订单明细的tab切换
@@ -231,6 +283,11 @@
                     {value: 335, name: '已送达'},
                     {value: 400, name: '已收货'},
                     {value: 100, name: '已退款'}
+                ],
+                /*  门店排行的数据  */
+                storeRanking:[
+                    {sort:1,name:'望江花园店',effectiveOrder:'300',Actualpayment:'280',totalOrder:'500',totalMoney:'1000'},
+                    {sort:2,name:'书香门第店',effectiveOrder:'156',Actualpayment:'545',totalOrder:'248',totalMoney:'1553'}
                 ]
             }
         },
@@ -256,6 +313,13 @@
             },
             changeOrderTab(index) {
                 this.orderTabIndex = index
+            },
+            changeStoreRanking(type){
+                /*
+                * 切换门店排行
+                * type 接收 weixin(微信) ,zhifubao(支付宝)
+                * */
+                this.currentPay = type
             }
         }
     }

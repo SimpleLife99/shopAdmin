@@ -22,7 +22,7 @@
             },
             height: {
                 type: String,
-                default: '300px'
+                default: '350px'
             },
             pieData: {
                 type: Array,

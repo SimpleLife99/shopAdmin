@@ -3,7 +3,7 @@
 @boxshadow: 0px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 1);
 @boxshadowHover: 0px 0px 0px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(255, 255, 255, 1), inset 8px 8px 15px rgba(0, 0, 0, 0.1),inset -8px -8px 15px rgba(255, 255, 255, 1);
 
-.order {
+.refundOrder {
   padding: @app-main-basepadding;
   padding-top: 0;
 
@@ -11,6 +11,9 @@
     padding: @app-main-basepadding;
     box-shadow: @boxshadow;
     border-radius: @areaBorderRadius;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     .inputArea {
       display: flex;
@@ -24,7 +27,7 @@
         align-items: center;
 
         p {
-          width: 4em;
+          width: 5em;
           padding: 1em;
           white-space: nowrap;
           font-size: 14px;
@@ -32,51 +35,23 @@
           text-align: justify;
           text-justify: distribute-all-lines;
         }
-        .centerValue{
+
+        .centerValue {
           font-size: 14px;
           margin: 0 5px;
           color: #606266;
         }
       }
     }
-
-    .operationArea {
-      padding: @app-main-basepadding;
-      border-radius: @areaBorderRadius;
-      margin-top: 5px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-
-      .orderNum {
-        display: flex;
-        align-items: center;
-
-        span {
-          font-size: 14px
-        }
-      }
-
-      .order-gmv {
-        font-size: 14px;
-        color: #627FFF;
-        margin-left: 12px;
-        background-color: #f5f5f5;
-        padding: 5px 14px;
-        border-radius: 20px;
-      }
-    }
   }
-
-  .orderList {
+  .orderList{
     margin-top: @app-main-padding2;
-    padding-bottom: @app-main-basepadding;
     border-radius: @areaBorderRadius;
+    padding-bottom: @app-main-basepadding;
     overflow: hidden;
     background-color: #ffffff;
 
-    .pagination {
+    .pagination{
       margin-top: @app-main-basepadding;
     }
   }

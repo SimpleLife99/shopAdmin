@@ -76,7 +76,7 @@
                     },
                     series: [
                         {
-                            name: '金额',
+                            name: '销售额',
                             type: 'line',
                             smooth: true,
                             data: [150, 123, 304, 464, 489, 158, 125, 230],

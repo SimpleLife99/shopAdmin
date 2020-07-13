@@ -18,6 +18,12 @@ const orderRouter = {
             component: () => import('@/views/order/index')
         },
         {
+            path: 'refundOrder',
+            name: 'RefundOrder',
+            meta: {title: '退款订单'},
+            component: () => import('@/views/order/refundOrder')
+        },
+        {
             path: 'sendSetting',
             name: 'sendSetting',
             meta: {title: '发货设置'},
