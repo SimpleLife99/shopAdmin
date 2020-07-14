@@ -16,12 +16,35 @@
 
     .setContainer {
       padding: 0 10px;
-      .tabs{
+
+      .tabs {
         display: flex;
         align-items: center;
-        .tabsItem{
+        height: 50px;
+        margin-bottom: 10px;
+        position: relative;
+        border-bottom: 1px solid #e4e7ed;
+
+        .tabsItem {
           cursor: pointer;
           width: 120px;
+          text-align: center;
+          transition: 0.2s ease;
+        }
+        .tabsItem_active{
+          color: @themeColor;
+        }
+        .tabsItem:hover{
+          color: @themeColor;
+        }
+        .tabs_bar{
+          width: 120px;
+          height: 2px;
+          background-color: @themeColor;
+          position: absolute;
+          transition: left ease 0.2s;
+          bottom: -1px;
+          left: 0;
         }
       }
     }

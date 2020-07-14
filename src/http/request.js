@@ -28,11 +28,8 @@ export class Request {
                 headers: params.headers
             })
         } catch (error) {
-            Message({
-                message: error.message,
-                type: 'error',
-                duration: 2000
-            })
+            // 网络请求异常
+            console.log(error)
         }
     }
 
@@ -43,11 +40,8 @@ export class Request {
                 headers: params.headers || {}
             })
         } catch (error) {
-            Message({
-                message: error.message,
-                type: 'error',
-                duration: 2000
-            })
+            // 网络请求异常
+            console.log(error)
         }
     }
 
@@ -81,6 +75,7 @@ export class Request {
                     type: 'error',
                     duration: 2000
                 })
+                throw new Error
             }
             /*
             * -1 通用错误

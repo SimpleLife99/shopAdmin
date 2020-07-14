@@ -12,7 +12,7 @@ router.beforeEach(async (to, from, next) => {
     }
 
     let token = getToken()
-    if (token) {
+    if (token != undefined || token != null) {
         // 如果已经登录了 路由重定向到首页
         if (to.path === '/login') {
             next({path: '/', replace: true})

@@ -1,12 +1,12 @@
 import {removeToken, setToken} from '@/utils/auth'
-import {setSessionStorage,getSessionStorage} from '@/utils'
+import {getSessionStorage, setSessionStorage} from '@/utils'
 import {resetRouter} from "@/router";
 import http from '@/http/api/login'
 
 const user = {
     //存放数据
     state: {
-        userMessage:{},      // 用户信息
+        userMessage: {},      // 用户信息
         token: '',             // token
         userRoles: []         // 用户角色
     },
@@ -27,14 +27,16 @@ const user = {
         login: async function ({commit}, userInfo) {
             return new Promise((resolve, reject) => {
                 http.login({
-                    data:userInfo
-                }).then((response)=>{
-                    setToken(response.data.authorization)
-                    setSessionStorage('userMessage',JSON.stringify(response.data))
-                    commit('SET_USER', response.data)
-                    commit('SET_TOKEN', response.data.authorization)
-                    resolve()
-                }).catch(error =>{
+                    data: userInfo
+                }).then((response) => {
+                    if (response) {
+                        setToken(response.data.authorization)
+                        setSessionStorage('userMessage', JSON.stringify(response.data))
+                        commit('SET_USER', response.data)
+                        commit('SET_TOKEN', response.data.authorization)
+                        resolve()
+                    }
+                }).catch(error => {
                     reject(error)
                 })
             })
@@ -50,7 +52,7 @@ const user = {
                     commit('SET_TOKEN', response.data)
                     setToken(response.data)
                     resolve()
-                }).catch(error=>{
+                }).catch(error => {
                     reject(error)
                 })
             })
