@@ -6,7 +6,7 @@
                 <i :class="[isCollapse ? 'el-icon-s-unfold':'el-icon-s-fold' ]"></i>
             </div>
             <div class="breadcrumbCenter">
-                <breadcrumb />
+                <breadcrumb/>
             </div>
         </div>
         <div class="navbarRight">
@@ -15,8 +15,8 @@
                     <img class="userLogo"
                          src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=811095050,4111374456&fm=26&gp=0.jpg"
                          alt="">
-                    <p class="userName">苏琪</p>
-                    <p class="userPhone">18132807673</p>
+                    <p class="userName">{{ userMessage.user_real_name }}</p>
+                    <p class="userPhone">{{ userMessage.user_name }}</p>
                 </div>
                 <el-dropdown-menu slot="dropdown">
                     <el-dropdown-item icon="el-icon-s-shop">切换店铺</el-dropdown-item>
@@ -31,20 +31,31 @@
 <script>
     import {mapGetters, mapState} from 'vuex'
     import breadcrumb from '@/components/breadcrumb'
+
     export default {
         name: "navbar",
         data() {
-            return {}
+            return {
+                userinfo: ''
+            }
         },
         computed: {
             ...mapState({
                 isCollapse: state => state.application.isCollapse,
                 userMessage: state => state.user.userMessage
             }),
-            ...mapGetters(['isCollapse','userMessage']),
+            ...mapGetters(['isCollapse', 'userMessage']),
         },
-        components:{breadcrumb},
-        created() {  },
+        components: {breadcrumb},
+        beforeCreate() {
+            //    组件文件创建之前
+
+        },
+        created() {
+            if ( Object.keys(this.userMessage).length === 0) {
+                this.$store.dispatch('getUserinfo')
+            }
+        },
         methods: {
             logout() {
                 this.$store.dispatch('logOut')

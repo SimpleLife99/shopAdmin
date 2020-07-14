@@ -10,9 +10,6 @@
     padding: @app-main-basepadding;
     box-shadow: @boxshadow;
     border-radius: @areaBorderRadius;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     .inputArea {
       display: flex;
@@ -41,6 +38,29 @@
           color: #606266;
         }
       }
+    }
+
+    .operationArea {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      .searchBtn {
+        border: none;
+        background-color: @themeColor;
+      }
+    }
+  }
+
+  .orderList {
+    margin-top: @app-main-padding2;
+    border-radius: @areaBorderRadius;
+    padding-bottom: @app-main-basepadding;
+    overflow: hidden;
+    background-color: #ffffff;
+
+    .pagination {
+      margin-top: @app-main-basepadding;
     }
   }
 }

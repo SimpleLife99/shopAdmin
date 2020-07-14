@@ -38,6 +38,7 @@ export function debounce(func, wait, immediate) {
         return result
     }
 }
+
 /*
 * @timestamp 时间戳 ；@formats 时间格式
 * 其中formats格式包括
@@ -87,4 +88,39 @@ export function dateFormat(timestamp, formats) {
             s: second
         })[matches];
     });
+}
+
+/*
+* 操作 sessionStorage
+* */
+export function setSessionStorage(name, value) {
+    // session名 => @name:String
+    // session值 => @value
+    return sessionStorage.setItem(name, value)
+}
+
+export function getSessionStorage(name) {
+    // session名 => @name
+    return sessionStorage.getItem(name)
+}
+
+export function removeSessionItem(name) {
+    // session名 => @name
+    return sessionStorage.removeItem(name)
+}
+/*
+* 操作 localStorage
+* */
+export function setStorage(name, value) {
+    // Storage名 => @name:String
+    // Storage值 => @value
+    return localStorage.setItem(name, value);
+}
+export function getStorage(name) {
+    // Storage名 => @name:String
+    return localStorage.getItem(name);
+}
+export function removeStorage(name) {
+    // Storage名 => @name:String
+    return localStorage.removeItem(name);
 }

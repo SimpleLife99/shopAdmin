@@ -12,7 +12,7 @@
                         <p>请使用您本人的账号密码登录</p>
                         <div class="inputBox">
                             <img class="inputIcon" src="@/assets/login/user.png" alt="">
-                            <input v-model="userName" type="text" placeholder="请输入用户名"/>
+                            <input v-model="username" type="text" placeholder="请输入用户名"/>
                         </div>
                         <div class="inputBox">
                             <img class="inputIcon" src="@/assets/login/password.png" alt="">
@@ -90,7 +90,7 @@
 </template>
 
 <script>
-    import http from '@/http/api/login'
+    // import http from '@/http/api/login'
 
     export default {
         name: "login",
@@ -98,8 +98,8 @@
             return {
                 currentStatus:'login',
                 isCanView:false,        // 密码是否可见 true可见 false不可见
-                userName: 'suqi',
-                password: '123',
+                username: '15600001111',
+                password: '666888',
                 regInfo:{
                     businessName:'',
                     signphone:'',
@@ -133,20 +133,20 @@
         },
         methods: {
             login() {
-                if (this.userName === '') {
+                if (this.username === '') {
                     this.$message.error('请输入用户名！')
                 } else if (this.password === '') {
                     this.$message.error('请输入密码！')
                 } else if (this.verification(this.password)) {
                     this.$message.error('密码中不能含有空格！')
                 } else {
-                    this.$message({
-                        message: '登录成功',
-                        type: 'success',
-                        duration: 2000
-                    });
-                    this.$store.dispatch('getAuthCode')
-                    this.$store.dispatch('login', {userName: this.userName, password: this.password}).then(() => {
+                    // this.$store.dispatch('getAuthCode')
+                    this.$store.dispatch('login', {username: this.username, password: this.password}).then(() => {
+                        this.$message({
+                            message: '登录成功',
+                            type: 'success',
+                            duration: 2000
+                        });
                         this.$router.push({name: 'Home', replace: true})
                     })
                 }
@@ -216,10 +216,10 @@
                 // 获取登录验证
                 this.$store.dispatch('getAuthCode')
             },
-            async adminlogin(){
-                let Data = await http.userLogin({})
-                console.log(Data)
-            }
+            // async adminlogin(){
+            //     let Data = await http.userLogin({})
+            //     console.log(Data)
+            // }
         }
     }
 </script>

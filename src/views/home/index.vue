@@ -17,6 +17,7 @@
                         type="daterange"
                         range-separator="至"
                         start-placeholder="开始日期"
+                        value-format="yyyy-MM-dd"
                         end-placeholder="结束日期">
                 </el-date-picker>
                 <div class="confirmTime" @click="changeDateTime">查找</div>
@@ -304,7 +305,8 @@
                 this.slipLeft = (id - 1) * 80
             },
             changeDateTime() {
-                if (! this.dateTime == null) {
+                console.log(this.dateTime)
+                if (this.dateTime != null) {
                     console.log(this.dateTime)
                 } else {
                     this.$message.error('先选择时间，再查找！');

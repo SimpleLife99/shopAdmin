@@ -1,6 +1,7 @@
 import config from "./config";
 import axios from "axios";
 import {Message} from 'element-ui'
+import {getToken} from '@/utils/auth'
 
 /*
 * 当请求头为 “ application/x-www-form-urlencoded ” 时
@@ -60,6 +61,7 @@ export class Request {
             * application/x-www-form-urlencoded
             */
             config.headers['Content-Type'] = 'application/json';
+            config.authorization = getToken
             return config;
         }, function (error) {
             // 对请求错误做些什么
@@ -71,15 +73,19 @@ export class Request {
     async ResponseInterceptor() {
         axios.interceptors.response.use(response => {
             // 对响应数据做点什么
-            if (response.data.errorCode == 200){
+            if (response.data.code == 0){
                 return response.data
             }else{
                 Message({
-                    message: response.data.message,
+                    message: response.data.msg,
                     type: 'error',
                     duration: 2000
                 })
             }
+            /*
+            * -1 通用错误
+            * 40001 未登录 跳转登录页，清除token
+            * */
         }, function (error) {
             // 对响应错误做点什么
             return Promise.reject(error);

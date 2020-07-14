@@ -1,24 +1,27 @@
 <template>
-    <div class="presellOrder">
+    <div class="deliveryOrder">
         <div class="searchArea">
             <div class="inputArea">
                 <div class="inputBox">
                     <p>订单编号</p>
-                    <el-input v-model="searchMsg.orderid" placeholder="请输入内容"></el-input>
-                </div>
-                <div class="inputBox">
-                    <p>商品名称</p>
-                    <el-input v-model="searchMsg.goodsname" placeholder="请输入内容"></el-input>
-                </div>
-                <div class="inputBox">
-                    <p>手机号码</p>
-                    <el-input v-model="searchMsg.phone" placeholder="请输入内容"></el-input>
+                    <el-input v-model="searchMsg.order_sn" placeholder="请输入内容"></el-input>
                 </div>
                 <div class="inputBox">
                     <p>订单状态</p>
-                    <el-select v-model="searchMsg.orderState" placeholder="请选择">
+                    <el-select v-model="searchMsg.order_status" placeholder="请选择">
                         <el-option
-                                v-for="item in status"
+                                v-for="item in orderStatus"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
+                <div class="inputBox">
+                    <p>支付状态</p>
+                    <el-select v-model="searchMsg.pay_status" placeholder="请选择">
+                        <el-option
+                                v-for="item in payStatus"
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value">
@@ -51,14 +54,14 @@
                     size="medium"
                     :header-cell-style="{background: '#f2f5ff'}"
                     style="width: 100%">
-                <el-table-column align="center" prop="orderid"  label="订单编号" />
-                <el-table-column align="center" prop="goodsname"  label="商品名称"/>
-                <el-table-column align="center" prop="phone"  label="手机号" width="120" />
-                <el-table-column align="center" prop="addtime"  label="创建时间"/>
-                <el-table-column align="center" prop="note"  label="用户留言"/>
-                <el-table-column align="center" prop="orderType"  label="订单类型"/>
-                <el-table-column align="center" prop="orderStatus"  label="订单状态" />
+                <el-table-column align="center" prop="order_sn"  label="订单编号" />
                 <el-table-column align="center" prop="money"  label="实付金额"/>
+                <el-table-column align="center" prop="order_status"  label="订单状态" width="120" />
+                <el-table-column align="center" prop="delivery_status"  label="物流状态"/>
+                <el-table-column align="center" prop="company"  label="物流公司"/>
+                <el-table-column align="center" prop="phone"  label="手机号码"/>
+                <el-table-column align="center" prop="note"  label="用户留言" />
+                <el-table-column align="center" prop="addtime"  label="下单时间"/>
                 <el-table-column align="center" label="操作">
                     <el-button type="primary">操作</el-button>
                 </el-table-column>
@@ -79,38 +82,38 @@
 
 <script>
     export default {
-        name: "presellOrder",
+        name: "deliveryOrder",
         data(){
             return{
                 searchMsg:{
-                    orderid:'',
+                    order_sn: '',
+                    order_status:'',
                     time:{
                         start:'',
                         end:''
                     },
-                    phone:'',
-                    goodsname:'',
-                    orderStatus:''
+                    pay_status:''
                 },
-                status:[
-                    {value:1,label:'全部'},
-                    {value:2,label:'待付定金'},
-                    {value:3,label:'待付尾款'},
-                    {value:4,label:'已付尾款'},
-                    {value:5,label:'交易关闭'},
-                    {value:6,label:'交易关闭（客户违约）'},
-                    {value:7,label:'交易关闭（客户取消）'},
+                orderStatus:[
+                    {value:1,label:'待接单'},
+                    {value:2,label:'已接单'},
+                    {value:3,label:'已拣货'},
+                    {value:4,label:'已取货'},
+                    {value:5,label:'已配送'},
+                    {value:6,label:'已送达'},
+                    {value:7,label:'已收货'},
+                    {value:8,label:'已核验'},
+                    {value:9,label:'支付成功物流创建失败'},
                 ],
+                payStatus:[{value:1,label:'未支付'},{value:2,label:'已支付'}],
                 orderList:[
-                    {orderid: '20200605102201587',goodsname: '青岛啤酒崂山清爽330ml*6',phone: '15684590097',addtime: '2020-06-05 10:20:01',note:'留言',orderType:'提货',orderStatus: '退款成功',money:'0.5'}
+                    {order_sn: '202005281507224694',money: '0.02',order_status: '退款成功',delivery_status:'未创建物流订单',company:'达达',phone:'15684590097',note:'留言',addtime:'2020-05-28 15:07:26'}
                 ]
             }
         },
-        created(){
-
+        created() {
         },
-        mounted(){
-
+        mounted() {
         },
         methods:{
             /* 分页方法 */
@@ -128,5 +131,5 @@
 </script>
 
 <style scoped lang="less">
-    @import "./../../styles/pages/order/presellOrder";
+    @import "./../../styles/pages/order/deliveryOrder";
 </style>

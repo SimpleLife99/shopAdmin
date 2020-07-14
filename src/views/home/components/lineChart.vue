@@ -41,7 +41,7 @@
                         trigger: 'axis'
                     },
                     legend: {
-                        data: ['金额', '订单量']
+                        data: ['销售额', '订单量']
                     },
                     grid: {
                         top: 50,

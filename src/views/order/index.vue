@@ -83,7 +83,7 @@
                     <div class="order-gmv">订单数：100</div>
                 </div>
                 <div class="operation">
-                    <el-button type="primary">搜索</el-button>
+                    <el-button class="searchBtn" type="primary">搜索</el-button>
                     <el-button type="success">列表导出</el-button>
                     <el-button type="success">统计导出</el-button>
                 </div>
