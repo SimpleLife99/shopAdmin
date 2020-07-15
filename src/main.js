@@ -8,7 +8,7 @@ import store from './store'
 import './icons/iconfont' // 引入阿里图标
 import './permission' //权限设置
 
-Vue.use(ElementUI,{ size: 'small', zIndex: 3000 }); //设置element-ui的默认尺寸
+  Vue.use(ElementUI,{ size: 'medium', zIndex: 3000 }); //设置element-ui的默认尺寸
 Vue.config.productionTip = false
 
 new Vue({

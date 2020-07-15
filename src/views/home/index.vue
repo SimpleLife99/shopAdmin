@@ -228,12 +228,12 @@
                                 <el-table-column
                                         align="center"
                                         prop="effectiveOrder"
-                                        label="有效订单">
+                                        label="已付款订单">
                                 </el-table-column>
                                 <el-table-column
                                         align="center"
                                         prop="Actualpayment"
-                                        label="实付款">
+                                        label="已退款订单">
                                 </el-table-column>
                                 <el-table-column
                                         align="center"
