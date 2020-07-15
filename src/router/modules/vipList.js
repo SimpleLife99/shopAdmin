@@ -7,7 +7,7 @@ const comRouter = {
   redirect: '/commission/setUp',
   meta: {
     roles: ['admin'],
-    title: '佣金管理',
+    title: '会员列表',
     icon: 'kabao'
   },
   children: [
@@ -17,19 +17,6 @@ const comRouter = {
       meta: { title: '佣金设置' },
       component: () => import('@/views/commission/setUp')
     }
-    ,
-    {
-      path: 'rule',
-      name: 'rule',
-      meta: { title: '佣金规则' },
-      component: () => import('@/views/commission/rule')
-    },
-    {
-      path: 'bill',
-      name: 'bill',
-      meta: { title: '佣金流水' },
-      component: () => import('@/views/commission/bill')
-    },
   ]
 }
 
