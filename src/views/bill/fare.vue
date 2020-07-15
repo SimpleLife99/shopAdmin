@@ -9,6 +9,21 @@
             placeholder="请输入订单号"
           ></el-input>
         </div>
+        <div class="inputBox w210">
+          <p>流水类型</p>
+          <el-select
+            v-model="searchMsg.pay_status"
+            placeholder="请选择"
+          >
+            <el-option
+              v-for="item in payStatus"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
         <div class="inputBox">
           <p>创建时间</p>
           <el-date-picker
@@ -31,14 +46,7 @@
             type="primary"
           >搜索</el-button>
         </div>
-        <div class="operationArea new-btn money">
-          <!-- <el-button
-            class="searchBtn"
-            icon="el-icon-circle-plus"
-            type="success"
-          >新建规则</el-button> -->
-          <span style="color:#e47470">余额：</span>999922.00元
-        </div>
+
       </div>
 
     </div>
@@ -78,8 +86,12 @@
         </el-table-column> -->
       </el-table>
       <div class="total-box">
-        <div>总计：<span style="color:#008000">2233.00元</span></div>
-        <div>本页小计：<span style="color:#008000">2233.00元</span></div>
+        <div>总计:</div>
+        <div>配送：<span style="color:#FF0000">2233.00元</span></div>
+        <div>回退：<span style="color:#008000">2233.00元</span></div>
+        <div style="margin-left:24px">本页小计:</div>
+        <div>配送：<span style="color:#FF0000">23.00元</span></div>
+        <div>回退：<span style="color:#008000">33.00元</span></div>
       </div>
       <div class="pagination">
         <el-pagination
@@ -139,5 +151,5 @@ export default {
 
 <style scoped lang="less">
 @import './../../styles/pages/commission/rule';
-@import '../../styles/pages/bill/index';
+@import '../../styles/pages/bill/fare.less';
 </style>

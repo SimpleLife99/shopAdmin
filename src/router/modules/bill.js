@@ -19,16 +19,16 @@ const billRouter = {
     }
     ,
     {
-      path: 'rule',
-      name: 'rule',
+      path: 'fare',
+      name: 'fare',
       meta: { title: '运费账单' },
-      component: () => import('@/views/commission/rule')
+      component: () => import('@/views/bill/fare')
     },
     {
-      path: 'bill2',
-      name: 'bill2',
+      path: 'message',
+      name: 'message',
       meta: { title: '短信账单' },
-      component: () => import('@/views/commission/bill')
+      component: () => import('@/views/bill/message')
     },
   ]
 }
