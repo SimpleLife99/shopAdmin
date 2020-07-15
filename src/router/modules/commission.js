@@ -8,7 +8,7 @@ const comRouter = {
   meta: {
     roles: ['admin'],
     title: '佣金管理',
-    icon: 'shouye'
+    icon: 'kabao'
   },
   children: [
     {

@@ -8,7 +8,7 @@ const billRouter = {
   meta: {
     roles: ['admin'],
     title: '余额/账单',
-    icon: 'shouye'
+    icon: 'dingdan'
   },
   children: [
     {
