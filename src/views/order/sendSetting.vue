@@ -48,12 +48,6 @@
         mounted() {
         },
         methods:{
-            handleClick(tab, event) {
-                console.log(tab, event);
-            },
-            saveSetting(){
-                console.log(this.setting)
-            }
         }
     }
 </script>

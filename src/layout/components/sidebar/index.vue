@@ -44,7 +44,7 @@ export default {
     },
   },
   created () {
-    console.log('路由', this.permission_routes)
+    // console.log('路由', this.permission_routes)
     // this.permission_routes.forEach((itm, idx) => {
     //   if (idx == 0) {
     //     itm.hidden = false
