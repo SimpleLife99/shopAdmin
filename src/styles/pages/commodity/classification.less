@@ -1,0 +1,21 @@
+@import "./../../public/index";
+@boxshadow: 0px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 1);
+@boxshadowHover: 0px 0px 0px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(255, 255, 255, 1), inset 8px 8px 15px rgba(0, 0, 0, 0.1),inset -8px -8px 15px rgba(255, 255, 255, 1);
+
+.classification{
+  padding: @app-main-padding;
+  .setcontainer{
+    padding: @app-main-padding;
+    border-radius: @areaBorderRadius;
+    background-color: @content-background-color;
+    .containerTitle{
+      padding: @app-main-basepadding;
+      border-radius: @areaBorderRadius;
+      background-color: @app-main-background-color;
+      p{
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    }
+  }
+}

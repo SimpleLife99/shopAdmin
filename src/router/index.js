@@ -9,10 +9,11 @@ Vue.use(VueRouter)
 * */
 import Layout from '@/layout'
 /* 导入模块路由 */
-import orderRouter from "./modules/order";
-import marketing from "./modules/marketing";
-import comRouter from './modules/commission'
-import billRouter from './modules/bill'
+import orderRouter from "./modules/order";          // 订单管理
+import marketing from "./modules/marketing";        // 营销管理
+import comRouter from './modules/commission'        // 佣金管理
+import billRouter from './modules/bill'             // 账单管理
+import commodityRouter from './modules/commodity'   // 商品管理页路由
 /*
 * constantRoutes
 *   代表那些不需要动态判断权限的路由，如登录页、404、等通用页面。
@@ -43,7 +44,8 @@ export const constantRoutes = [
   marketing,
   orderRouter,
   comRouter,
-  billRouter
+  billRouter,
+  commodityRouter
 ];
 export const asyncRoutes = [
   {
