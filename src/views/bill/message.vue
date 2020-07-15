@@ -3,11 +3,51 @@
     <div class="searchArea">
       <div class="inputArea">
         <div class="inputBox">
-          <p>订单号</p>
+          <p>手机号码</p>
           <el-input
             v-model="searchMsg.order_sn"
-            placeholder="请输入订单号"
+            placeholder="请输入手机号码"
           ></el-input>
+        </div>
+        <div class="inputBox w210">
+          <p>类型</p>
+          <el-select
+            v-model="searchMsg.pay_status"
+            placeholder="请选择"
+          >
+            <el-option
+              label="所有"
+              value="所有"
+            >
+            </el-option>
+            <el-option
+              v-for="item in payStatus"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
+        <div class="inputBox w210">
+          <p>发送状态</p>
+          <el-select
+            v-model="searchMsg.pay_status"
+            placeholder="请选择"
+          >
+            <el-option
+              label="所有"
+              value="所有"
+            >
+            </el-option>
+            <el-option
+              v-for="item in payStatus"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
         </div>
         <div class="inputBox">
           <p>创建时间</p>
@@ -31,14 +71,7 @@
             type="primary"
           >搜索</el-button>
         </div>
-        <div class="operationArea new-btn money">
-          <!-- <el-button
-            class="searchBtn"
-            icon="el-icon-circle-plus"
-            type="success"
-          >新建规则</el-button> -->
-          <span style="color:#e47470">余额：</span>999922.00元
-        </div>
+
       </div>
 
     </div>
@@ -52,35 +85,52 @@
         <el-table-column
           align="center"
           prop="order_sn"
-          label="流水类型"
+          label="短信ID"
+          width="260"
         />
         <el-table-column
           align="center"
           prop="money"
-          label="订单号"
+          label="昵称"
+          width="130"
         />
         <el-table-column
           align="center"
           prop="order_status"
-          label="运费"
+          label="手机号码"
+        />
+        <el-table-column
+          align="center"
+          prop="delivery_status"
+          label="类型"
+          width="150"
+        />
+        <el-table-column
+          align="center"
+          prop="delivery_status"
+          label="发送状态"
+          width="130"
+        />
+        <el-table-column
+          align="center"
+          prop="delivery_status"
+          label="短信费用"
+          width="130"
         />
         <el-table-column
           align="center"
           prop="delivery_status"
           label="创建时间"
         />
-        <!-- <el-table-column
+
+        <el-table-column
           align="center"
-          label="操作"
+          label="短信内容"
         >
           <el-button type="primary">查看</el-button>
-          <el-button type="danger">删除</el-button>
-        </el-table-column> -->
+        </el-table-column>
       </el-table>
-      <div class="total-box">
-        <div>总计：<span style="color:#008000">2233.00元</span></div>
-        <div>本页小计：<span style="color:#008000">2233.00元</span></div>
-      </div>
+
       <div class="pagination">
         <el-pagination
           background
@@ -112,9 +162,9 @@ export default {
       },
       payStatus: [{ value: 1, label: '未支付' }, { value: 2, label: '已支付' }],
       orderList: [
-        { order_sn: '20', money: '0.02', order_status: '退款成功', delivery_status: '未创建物流订单', company: '达达', phone: '15684590097', note: '留言', addtime: '2020-05-28 15:07:26' },
-        { order_sn: '21', money: '0.02', order_status: '退款成功', delivery_status: '未创建物流订单', company: '达达', phone: '15684590097', note: '留言', addtime: '2020-05-28 15:07:26' },
-        { order_sn: '22', money: '0.02', order_status: '退款成功', delivery_status: '未创建物流订单', company: '达达', phone: '15684590097', note: '留言', addtime: '2020-05-28 15:07:26' },
+        { order_sn: '2004303506030533', money: '0.02', order_status: '退款成功', delivery_status: '发送成功', company: '达达', phone: '15684590097', note: '留言', addtime: '2020-05-28 15:07:26' },
+        { order_sn: '2004303506030533', money: '0.02', order_status: '退款成功', delivery_status: '发送成功', company: '达达', phone: '15684590097', note: '留言', addtime: '2020-05-28 15:07:26' },
+        { order_sn: '2004303506030533', money: '0.02', order_status: '退款成功', delivery_status: '发送成功', company: '达达', phone: '15684590097', note: '留言', addtime: '2020-05-28 15:07:26' },
       ]
     }
   },
@@ -139,5 +189,5 @@ export default {
 
 <style scoped lang="less">
 @import './../../styles/pages/commission/rule';
-@import '../../styles/pages/bill/index';
+@import '../../styles/pages/bill/fare.less';
 </style>
