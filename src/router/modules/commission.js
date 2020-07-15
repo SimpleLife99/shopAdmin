@@ -19,10 +19,16 @@ const comRouter = {
     }
     ,
     {
-      path: 'refundOrder',
-      name: 'RefundOrder',
-      meta: { title: '退款订单' },
-      component: () => import('@/views/order/refundOrder')
+      path: 'rule',
+      name: 'rule',
+      meta: { title: '佣金规则' },
+      component: () => import('@/views/commission/rule')
+    },
+    {
+      path: 'bill',
+      name: 'bill',
+      meta: { title: '佣金流水' },
+      component: () => import('@/views/commission/bill')
     },
   ]
 }

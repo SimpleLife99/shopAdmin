@@ -8,7 +8,7 @@
           </div>
           <div class="line-right">
             <el-input
-              v-model="input"
+              v-model="obj.content"
               placeholder="请输入内容"
             ></el-input>
             <div>前端展示名称，如“金豆”，“福豆”等</div>
@@ -28,7 +28,7 @@
             <div style="font-size:12px;color:#666">
               <el-input
                 style="width:79%"
-                v-model="input"
+                v-model="obj.money"
                 placeholder="请输入内容"
               ></el-input>个佣金=1元
             </div>
@@ -44,12 +44,12 @@
           </div>
           <div
             class="line-right"
-            style="width:70%"
+            style="width:79%"
           >
             <div style="font-size:12px;color:#666">
               <el-input
-                style="width:43%"
-                v-model="input"
+                style="width:38%"
+                v-model="obj.proportion"
                 placeholder="请输入内容"
               ></el-input>%
             </div>
@@ -60,6 +60,7 @@
       <el-button
         type="primary"
         size='medium'
+        class="submitBtn set-btn"
       >设置</el-button>
 
     </div>
@@ -71,7 +72,11 @@ export default {
   data () {
     return {
       currentTab: 1,
-
+      obj: {
+        proportion: '',
+        money: '',
+        content: ''
+      }
     }
   },
   components: {},

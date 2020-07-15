@@ -12,6 +12,7 @@ import Layout from '@/layout'
 import orderRouter from "./modules/order";
 import marketing from "./modules/marketing";
 import comRouter from './modules/commission'
+import billRouter from './modules/bill'
 /*
 * constantRoutes
 *   代表那些不需要动态判断权限的路由，如登录页、404、等通用页面。
@@ -41,7 +42,8 @@ export const constantRoutes = [
   },
   marketing,
   orderRouter,
-  comRouter
+  comRouter,
+  billRouter
 ];
 export const asyncRoutes = [
   {
