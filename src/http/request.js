@@ -22,27 +22,47 @@ export class Request {
         this.ResponseInterceptor()  // 添加响应拦截器
     }
 
-    async post(params) {
-        try {
-            return await axios.post(params.url || {}, params.data || {}, {
-                headers: params.headers
+    post(params) {
+        return new Promise((resolve,reject)=>{
+            axios.post(params.url,params.data,{
+                headers:params.headers
+            }).then(response=>{
+                resolve(response.data)
+            }).catch(error=>{
+                reject(error)
+                console.log(error)
             })
-        } catch (error) {
-            // 网络请求异常
-            console.log(error)
-        }
+        })
+        // try {
+        //     return axios.post(params.url || {}, params.data || {}, {
+        //         headers: params.headers
+        //     })
+        // } catch (error) {
+        //     // 网络请求异常
+        //     console.log(error)
+        // }
     }
 
     async get(params) {
-        try {
-            return await axios.get(params.url, {
-                data: params.data || {},
-                headers: params.headers || {}
+        return new Promise((resolve,reject)=>{
+            axios.get(params.url,params.data,{
+                headers:params.headers
+            }).then(response=>{
+                resolve(response.data)
+            }).catch(error=>{
+                reject(error)
+                console.log(error)
             })
-        } catch (error) {
-            // 网络请求异常
-            console.log(error)
-        }
+        })
+        // try {
+        //     return await axios.get(params.url, {
+        //         data: params.data || {},
+        //         headers: params.headers || {}
+        //     })
+        // } catch (error) {
+        //     // 网络请求异常
+        //     console.log(error)
+        // }
     }
 
     // 添加请求拦截器

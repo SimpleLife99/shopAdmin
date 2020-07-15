@@ -30,10 +30,10 @@ const user = {
                     data: userInfo
                 }).then((response) => {
                     if (response) {
-                        setToken(response.data.authorization)
-                        setSessionStorage('userMessage', JSON.stringify(response.data))
-                        commit('SET_USER', response.data)
-                        commit('SET_TOKEN', response.data.authorization)
+                        setToken(response.authorization)
+                        setSessionStorage('userMessage', JSON.stringify(response))
+                        commit('SET_USER', response)
+                        commit('SET_TOKEN', response.authorization)
                         resolve()
                     }
                 }).catch(error => {
