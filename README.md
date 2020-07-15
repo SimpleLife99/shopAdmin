@@ -4,8 +4,6 @@
 
 ### 项目集成：
 
-![123.png](https://i.postimg.cc/prCddy9P/123.png)
-
 > 网站依赖Element-ui封装layout布局：
 > - 侧边栏
 >> 根据路由文件自动生成侧边栏。 <br/>
