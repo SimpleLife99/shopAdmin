@@ -97,19 +97,19 @@
                     :header-cell-style="{background:'#f2f5ff'}"
                     style="width: 100%">
                 <el-table-column prop="id" label="序号" align="center" width="50"/>
-                <el-table-column prop="goodsn" label="订单编号" align="center" />
-                <el-table-column prop="amount" label="应付金额" align="center" />
-                <el-table-column prop="price" label="实付金额" align="center"/>
-                <el-table-column label="订单类型" align="center">
+                <el-table-column prop="goodsn" label="订单编号" align="center" width="120" />
+                <el-table-column prop="amount" label="应付金额" align="center" width="120"/>
+                <el-table-column prop="price" label="实付金额" align="center" width="120"/>
+                <el-table-column label="订单类型" align="center" width="120">
                     <template slot-scope="scope">
                         <span>{{ scope.row.ordertype }}</span>
                     </template>
                 </el-table-column>
-                <el-table-column prop="orderState" label="订单状态" align="center"/>
-                <el-table-column prop="payMode" label="支付方式" align="center"/>
-                <el-table-column prop="phone" label="手机号码" align="center"/>
+                <el-table-column prop="orderState" label="订单状态" align="center" width="120"/>
+                <el-table-column prop="payMode" label="支付方式" align="center" width="120"/>
+                <el-table-column prop="phone" label="手机号码" align="center" width="120"/>
                 <el-table-column prop="note" label="用户留言" align="center"/>
-                <el-table-column prop="createTime" label="下单时间" align="center"/>
+                <el-table-column prop="createTime" label="下单时间" align="center" width="150"/>
                 <el-table-column label="操作" align="center">
                     <el-button type="primary">操作</el-button>
                 </el-table-column>

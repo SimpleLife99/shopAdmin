@@ -1,25 +1,26 @@
 <template>
   <div class="sidebar">
     <logo v-if="showlogo"></logo>
-    <el-scrollbar>
-      <el-menu
-        :default-active="activeMenu"
-        background-color="#32394c"
-        text-color="#e6e7e9"
-        active-text-color="#627fff"
-        :collapse-transition="true"
-        :unique-opened="false"
-        :collapse="isCollapse"
-        mode="vertical"
-      >
-        <sidebarItem
-          v-for="route in permission_routes"
-          :key="route.path"
-          :item="route"
-          :base-path="route.path"
-        />
-      </el-menu>
-    </el-scrollbar>
+    <el-menu
+            :default-active="activeMenu"
+            background-color="#32394c"
+            text-color="#e6e7e9"
+            active-text-color="#627fff"
+            :collapse-transition="true"
+            :unique-opened="false"
+            :collapse="isCollapse"
+            mode="vertical"
+    >
+      <sidebarItem
+              v-for="route in permission_routes"
+              :key="route.path"
+              :item="route"
+              :base-path="route.path"
+      />
+    </el-menu>
+<!--    <el-scrollbar>-->
+<!--      -->
+<!--    </el-scrollbar>-->
   </div>
 </template>
 

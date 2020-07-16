@@ -11,7 +11,7 @@
   */
 
   .sidebar-container {
-    width: @sider-width;
+    width: @sider-width !important;
     transition: width 0.25s;
     height: 100%;
     position: fixed;
@@ -19,9 +19,9 @@
     left: 0;
     bottom: 0;
     z-index: 1001;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
     background-color: @sider-background-color;
-
     .sidebar-title {
       font-size: 14px;
     }
@@ -63,6 +63,17 @@
     height: 50px;
     background-color: @navbar-background-color;
   }
+  /*
+    @app-main-width  mixin.less定义
+    @app-mian-width = 1920 - @sider-width
+  */
+  //.main-container{
+  //  .AppMain{
+  //    width: @app-main-width;
+  //    background-color: @app-main-background-color;
+  //    overflow-x: scroll;
+  //  }
+  //}
 }
 
 /*

@@ -63,20 +63,16 @@
                         </el-avatar>
                     </template>
                 </el-table-column>
-                <el-table-column align="left" label="商品信息">
-                    <template slot-scope="scope">
-                        <p>商品名称：{{ scope.row.commodity.goods_name }}</p>
-                        <p>商品编号：{{ scope.row.commodity.good_id }}</p>
-                        <p>商品货号：{{ scope.row.commodity.goods_sn }}</p>
-                        <p>所属门店：{{ scope.row.commodity.shop }}</p>
-                        <p>
-                            <el-tag>荐</el-tag>
-                            <el-tag type="success" style="margin: 0 5px">新</el-tag>
-                            <el-tag type="danger">热</el-tag>
-                        </p>
-                    </template>
+                <el-table-column align="center" prop="goods_name" label="商品名称" min-width="150"/>
+                <el-table-column align="center" prop="good_id" label="商品编码"/>
+                <el-table-column align="center" prop="goods_sn" label="商品货号" min-width="120"/>
+                <el-table-column align="center" label="商品类型" width="150">
+                    <el-tag>荐</el-tag>
+                    <el-tag type="success" style="margin: 0 5px">新</el-tag>
+                    <el-tag type="danger">热</el-tag>
                 </el-table-column>
-                <el-table-column align="center" prop="class" label="所属分类"/>
+                <el-table-column align="center" prop="shop" label="所属门店" min-width="120"/>
+                <el-table-column align="center" prop="class" label="所属分类" min-width="120"/>
                 <el-table-column align="center" prop="shop_price" label="在售价格" width="100"/>
                 <el-table-column align="center" prop="activity_type" label="活动类型"/>
                 <el-table-column align="center" prop="activity_price" label="活动价格" width="100"/>
@@ -124,12 +120,10 @@
                 commodityList: [
                     {
                         image: 'http://midstage.oss-cn-hangzhou.aliyuncs.com/10000005/8c480609-fbbb-4934-b8ee-0bd8c1a43bcb.jpg',
-                        commodity: {
-                            goods_name: '动感牙刷 4支装',
-                            good_id: '13215',
-                            goods_sn: '346546321321',
-                            shop: '望江花园店'
-                        },
+                        goods_name: '动感牙刷 4支装',
+                        good_id: '13215',
+                        goods_sn: '346546321321',
+                        shop: '望江花园店',
                         class: '卷纸/切纸',
                         shop_price: "20.0",
                         activity_type: '促销活动',
