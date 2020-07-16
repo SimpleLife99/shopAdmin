@@ -13,7 +13,7 @@ const billRouter = {
   children: [
     {
       path: 'index',
-      name: 'Bill',
+      name: 'BillIndex',
       meta: { title: '充值账单' },
       component: () => import('@/views/bill/index')
     }

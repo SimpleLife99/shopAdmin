@@ -15,6 +15,8 @@ import comRouter from './modules/commission'        // 佣金管理
 import billRouter from './modules/bill'             // 账单管理
 import commodityRouter from './modules/commodity'   // 商品管理页路由
 import members  from './modules/members'            // 会员
+import accountRouter from './modules/account'
+import moreShopRouter from './modules/moreShop'
 /*
 * constantRoutes
 *   代表那些不需要动态判断权限的路由，如登录页、404、等通用页面。
@@ -47,7 +49,9 @@ export const constantRoutes = [
   comRouter,
   billRouter,
   commodityRouter,
-  members
+  members,
+  accountRouter,
+  moreShopRouter
 ];
 export const asyncRoutes = [
   {

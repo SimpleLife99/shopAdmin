@@ -1,7 +1,7 @@
 export default {
   // developUrl:'http://www.duoshop.git/seller-api/',
   // developUrl:'https://shopadmin.zwztf.net/seller-api/',
-  developUrl: 'http://localhost:3000',
+  developUrl: 'http://192.168.0.56:3000',
   productUrl: 'http://www.duoshop.git/seller-api/',
   api: {
     index: '/',                                             // node接口
