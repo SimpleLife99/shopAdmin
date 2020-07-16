@@ -44,14 +44,15 @@
                 </div>
             </div>
             <div class="operationArea">
-                <el-button class="searchBtn" type="primary">搜索</el-button>
-                <el-button type="success">导出订单</el-button>
+                <el-button class="searchBtn" type="primary" icon="el-icon-search">搜索</el-button>
+                <el-button type="success" icon="el-icon-download">导出订单</el-button>
             </div>
         </div>
         <div class="orderList">
             <el-table
                     :data="orderList"
                     size="medium"
+                    v-loading="tableLoading"
                     :header-cell-style="{background: '#f2f5ff'}"
                     style="width: 100%">
                 <el-table-column align="center" prop="order_sn"  label="订单编号" />
@@ -85,6 +86,7 @@
         name: "deliveryOrder",
         data(){
             return{
+                tableLoading:false,         // 列表加载
                 searchMsg:{
                     order_sn: '',
                     order_status:'',

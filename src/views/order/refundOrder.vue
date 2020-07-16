@@ -22,12 +22,13 @@
                 </div>
             </div>
             <div class="operationArea">
-                <el-button type="primary">搜索</el-button>
+                <el-button type="primary" icon="el-icon-search">搜索</el-button>
             </div>
         </div>
         <div class="orderList">
             <el-table
                     :data="orderList"
+                    v-loading="tableLoading"
                     size="medium"
                     :header-cell-style="{background: '#f2f5ff'}"
                     style="width: 100%">
@@ -65,6 +66,7 @@
         name: "refundOrder",
         data() {
             return {
+                tableLoading:false,         // 列表加载
                 searchMsg:{
                     orderid:'',
                     time:{

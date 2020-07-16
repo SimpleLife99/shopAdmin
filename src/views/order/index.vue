@@ -83,9 +83,9 @@
                     <div class="order-gmv">订单数：100</div>
                 </div>
                 <div class="operation">
-                    <el-button class="searchBtn" type="primary">搜索</el-button>
-                    <el-button type="success">列表导出</el-button>
-                    <el-button type="success">统计导出</el-button>
+                    <el-button class="searchBtn" type="primary" icon="el-icon-search">搜索</el-button>
+                    <el-button type="success" icon="el-icon-download">列表导出</el-button>
+                    <el-button type="success" icon="el-icon-download">统计导出</el-button>
                 </div>
             </div>
         </div>
@@ -93,6 +93,7 @@
             <el-table
                     :data="orderList"
                     size="medium"
+                    v-loading="tableLoading"
                     :header-cell-style="{background:'#f2f5ff'}"
                     style="width: 100%">
                 <el-table-column prop="id" label="序号" align="center" width="50"/>
@@ -132,6 +133,7 @@
         name: "index",
         data() {
             return {
+                tableLoading:false,         // 列表加载
                 currentPage:1,
                 pageSize:10,
                 searchData: {
