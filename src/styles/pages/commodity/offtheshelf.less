@@ -1,0 +1,76 @@
+@import "./../../public/index";
+
+@boxshadow: 0px 8px 15px rgba(0, 0, 0, 0.1), -8px -8px 15px rgba(255, 255, 255, 1);
+@boxshadowHover: 0px 0px 0px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(255, 255, 255, 1), inset 8px 8px 15px rgba(0, 0, 0, 0.1),inset -8px -8px 15px rgba(255, 255, 255, 1);
+
+.commodity {
+  padding: @app-main-basepadding;
+  padding-top: 0;
+
+  .searchArea {
+    padding: @app-main-basepadding;
+    box-shadow: @boxshadow;
+    border-radius: @areaBorderRadius;
+
+    .inputArea {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      //justify-content: space-between;
+      flex-wrap: wrap;
+
+      .inputBox {
+        display: flex;
+        align-items: center;
+
+        p {
+          width: 5em;
+          padding: 1em;
+          white-space: nowrap;
+          font-size: 14px;
+          text-align-last: justify;
+          text-align: justify;
+          text-justify: distribute-all-lines;
+        }
+      }
+    }
+
+    .operationArea {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .inputBox {
+        display: flex;
+        align-items: center;
+
+        p {
+          width: 5em;
+          padding: 1em;
+          white-space: nowrap;
+          font-size: 14px;
+          text-align-last: justify;
+          text-align: justify;
+          text-justify: distribute-all-lines;
+        }
+
+        .searchBtn {
+          margin-left: 10px;
+          background-color: @themeColor;
+        }
+      }
+    }
+  }
+
+  .commodityList {
+    margin-top: @app-main-padding2;
+    border-radius: @areaBorderRadius;
+    padding-bottom: @app-main-basepadding;
+    overflow: hidden;
+    background-color: #ffffff;
+
+    .pagination {
+      margin-top: @app-main-basepadding;
+    }
+  }
+}

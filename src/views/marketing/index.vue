@@ -165,7 +165,7 @@
                     <span>提高下单转化率</span>
                 </div>
                 <div class="activityContent shoputils">
-                    <div class="activityItem">
+                    <div class="activityItem" @click="activityRouter('customerService')">
                         <div class="itemTop">
                             <div class="activityIcon">
                                 <svg class="icon" aria-hidden="true">
@@ -176,6 +176,19 @@
                         </div>
                         <div class="itemBottom">
                             <span>开启小程序客服功能</span>
+                        </div>
+                    </div>
+                    <div class="activityItem">
+                        <div class="itemTop">
+                            <div class="activityIcon">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#iconshuju"></use>
+                                </svg>
+                            </div>
+                            <p>刷单设置</p>
+                        </div>
+                        <div class="itemBottom">
+                            <span>开启刷单，使小程序数据更好看。</span>
                         </div>
                     </div>
                 </div>

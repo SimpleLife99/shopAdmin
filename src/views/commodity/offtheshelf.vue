@@ -3,37 +3,35 @@
         <div class="searchArea">
             <div class="inputArea">
                 <div class="inputBox">
-                    <div class="inputBox">
-                        <p>商品分类</p>
-                        <el-select v-model="searchMsg.classification" filterable placeholder="请选择" @change="changeData">
-                            <el-option
-                                    v-for="item in commodityClassification"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </div>
-                    <div class="inputBox">
-                        <el-select v-model="searchMsg.classification2" placeholder="二级分类">
-                            <el-option
-                                    v-for="item in commodityClassification2"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </div>
-                    <div class="inputBox">
-                        <el-select v-model="searchMsg.category" placeholder="商品类别">
-                            <el-option
-                                    v-for="item in category"
-                                    :key="item.value"
-                                    :label="item.label"
-                                    :value="item.value">
-                            </el-option>
-                        </el-select>
-                    </div>
+                    <p>商品分类</p>
+                    <el-select v-model="searchMsg.classification" filterable placeholder="请选择" @change="changeData">
+                        <el-option
+                                v-for="item in commodityClassification"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
+                <div class="inputBox">
+                    <el-select v-model="searchMsg.classification2" placeholder="二级分类">
+                        <el-option
+                                v-for="item in commodityClassification2"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
+                </div>
+                <div class="inputBox">
+                    <el-select v-model="searchMsg.category" placeholder="商品类别">
+                        <el-option
+                                v-for="item in category"
+                                :key="item.value"
+                                :label="item.label"
+                                :value="item.value">
+                        </el-option>
+                    </el-select>
                 </div>
             </div>
             <div class="operationArea">
